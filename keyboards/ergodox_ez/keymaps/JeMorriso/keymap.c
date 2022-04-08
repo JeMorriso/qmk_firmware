@@ -9,8 +9,8 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ergodox_pretty(
     KC_DELETE,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_TRANSPARENT,                                 LALT(KC_F4),    KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_F11,
-    KC_TAB,         KC_Q,           KC_W,           LT(1,KC_E),     KC_R,           KC_T,           OSL(2),                                         TT(3),          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSPACE,
-    LT(4,KC_ESCAPE),LT(4,KC_A),     KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,      KC_QUOTE,
+    KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           OSL(2),                                         TT(3),          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSPACE,
+    LT(4,KC_ESCAPE),KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,      KC_QUOTE,
     OSM(MOD_LSFT),  LT(3,KC_Z),     KC_X,           KC_C,           KC_V,           KC_B,           KC_TRANSPARENT,                                 OSL(4),         KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       OSM(MOD_RSFT),
     OSM(MOD_LGUI),  OSM(MOD_LCTL),  OSM(MOD_MEH),   OSM(MOD_LGUI),  OSM(MOD_LALT),                                                                                                  OSM(MOD_LALT),  OSM(MOD_LGUI),  OSM(MOD_MEH),   OSM(MOD_LCTL),  KC_RCTRL,
                                                                                                     OSM(MOD_LCTL),  KC_HOME,        KC_PGUP,        OSM(MOD_LCTL),
