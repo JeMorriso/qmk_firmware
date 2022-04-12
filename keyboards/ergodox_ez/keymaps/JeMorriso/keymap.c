@@ -23,12 +23,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_F11,
     TG(ONESHOT),          TD(DANCE_0),    KC_W,           KC_E,           KC_R,           KC_T,           TG(MED_FUNC),                                          TG(MOUSE),          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           TG(ONESHOT),
-    MEH_T(KC_BSPACE),KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,      MEH_T(KC_QUOTE),
+    MEH_T(KC_ESC),KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,      MEH_T(KC_QUOTE),
     OSM(MOD_LSFT),  MT(MOD_LGUI, KC_Z),MT(MOD_LALT, KC_X),MT(MOD_LSFT, KC_C),MT(MOD_LCTL, KC_V),KC_B,           TG(SYM),                                          TG(NUM_NAV),          KC_N,           MT(MOD_LCTL, KC_M),MT(MOD_LSFT, KC_COMMA),MT(MOD_LALT, KC_DOT),MT(MOD_LGUI, KC_SLASH),OSM(MOD_LSFT),
-    KC_DELETE,      KC_HOME,        KC_END,         KC_LEFT,        KC_RIGHT,                                                                                                       KC_DOWN,        KC_UP,          KC_PGDOWN,      KC_PGUP,        KC_TRANSPARENT,
+    KC_DELETE,      KC_HOME,        KC_END,         KC_UP,        KC_DOWN,                                                                                                        KC_LEFT,        KC_RIGHT,       KC_PGDOWN,      KC_PGUP,        KC_TRANSPARENT,
                                                                                                     TT(MED_FUNC),          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                    LT(SYM,KC_SPACE), LT(NUM_NAV,KC_ESCAPE),KC_TRANSPARENT, LSFT(KC_TAB),   LT(SYM,KC_TAB),   LT(NUM_NAV,KC_ENTER)
+                                                                                    LT(SYM,KC_SPACE), LT(NUM_NAV,KC_TAB),LSFT(KC_TAB), KC_TRANSPARENT,   LT(SYM,KC_ENTER),   LT(NUM_NAV,KC_BACKSPACE)
   ),
   [SYM] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
