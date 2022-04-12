@@ -82,10 +82,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
+extern rgb_config_t rgb_matrix_config;
+
 // Runs just one time when the keyboard initializes.
 void keyboard_post_init_user(void) {
   rgb_matrix_enable();
-};
+}
 
 // bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 //     switch (keycode) {
