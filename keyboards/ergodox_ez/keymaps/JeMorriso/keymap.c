@@ -4,6 +4,7 @@
 enum custom_keycodes {
   ST_MACRO_0,
   ST_MACRO_1,
+  CLEAR_OS,
 };
 
 enum tap_dance_codes {
@@ -14,6 +15,7 @@ enum layers {
     BASE,
     SYM,
     NUM_FUNC,
+    NUM,
     MED_NAV,
     MOUSE,
     ONESHOT,
@@ -21,14 +23,14 @@ enum layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT, KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_F11,
-    TG(ONESHOT),          TD(DANCE_0),    KC_W,           KC_E,           KC_R,           KC_T,           TG(NUM_FUNC),                                          TG(MOUSE),          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           TG(ONESHOT),
-    LT(MED_NAV,KC_ESC),KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,      LT(SYM,KC_QUOTE),
-    OSM(MOD_LSFT),  MT(MOD_LGUI, KC_Z),MT(MOD_LALT, KC_X),MT(MOD_LSFT, KC_C),MT(MOD_LCTL, KC_V),KC_B,           TG(SYM),                                          TG(MED_NAV),          KC_N,           MT(MOD_LCTL, KC_M),MT(MOD_LSFT, KC_COMMA),MT(MOD_LALT, KC_DOT),MT(MOD_LGUI, KC_SLASH),OSM(MOD_LSFT),
-    KC_DELETE,      KC_HOME,        KC_END,         MT(MOD_LCTL|MOD_LALT, KC_UP),        MEH_T(KC_DOWN),                                                                                                        MEH_T(KC_LEFT),        MT(MOD_LCTL|MOD_LALT,KC_RIGHT),       KC_PGDOWN,      KC_PGUP,        KC_TRANSPARENT,
-                                                                                                    KC_TRANSPARENT,          KC_TRANSPARENT, KC_TRANSPARENT, TT(MED_NAV),
+    OSL(MED_NAV), KC_TRANSPARENT, TG(MED_NAV), TG(SYM), KC_TRANSPARENT, KC_TRANSPARENT, CLEAR_OS,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TG(SYM), TG(MED_NAV), KC_TRANSPARENT, KC_F11,
+    OSL(SYM),          TD(DANCE_0),    KC_W,           KC_E,           KC_R,           KC_T,           TG(NUM_FUNC),                                          TG(MOUSE),          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           OSL(SYM),
+    KC_ESC,         KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,      KC_QUOTE,
+    OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,              KC_V,             KC_B,           TG(NUM),                                          TG(NUM),          KC_N,            KC_M, KC_COMMA, KC_DOT, KC_SLASH,OSM(MOD_LSFT),
+    KC_DELETE,      OSM(MOD_LGUI),  OSM(MOD_MEH),   OSM(MOD_LALT),     OSM(MOD_LCTL),                                                                                               OSM(MOD_LCTL),  OSM(MOD_LALT),           OSM(MOD_MEH),      OSM(MOD_LGUI),       KC_TRANSPARENT,
+                                                                                                    OSL(NUM), KC_TRANSPARENT, KC_TRANSPARENT, OSL(NUM),
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                    LT(SYM,KC_SPACE), LT(NUM_FUNC,KC_TAB),LSFT(KC_TAB), KC_TRANSPARENT,   LT(SYM,KC_ENTER),   LT(NUM_FUNC,KC_BACKSPACE)
+                                                                                    KC_SPACE,       KC_TAB,         LSFT(KC_TAB),   KC_TRANSPARENT, KC_ENTER,        KC_BACKSPACE
   ),
   [SYM] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -46,6 +48,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TO(BASE),       KC_TRANSPARENT, KC_4,           KC_5,           KC_6,           KC_TRANSPARENT,                                                                 KC_F11,         KC_F4,          KC_F5,          KC_F6,          KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_1,           KC_2,           KC_3,           KC_TRANSPARENT, TO(SYM),                                        KC_TRANSPARENT, KC_F12,         KC_F1,          KC_F2,          KC_F3,          KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_0,                                                                                                           KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
+  ),
+  [NUM] = LAYOUT_ergodox_pretty(
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_7,           KC_8,           KC_9,           KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT,         KC_7,          KC_8,          KC_9,          KC_TRANSPARENT, KC_TRANSPARENT,
+    TO(BASE),       KC_TRANSPARENT, KC_4,           KC_5,           KC_6,           KC_TRANSPARENT,                                                                 KC_TRANSPARENT,         KC_4,          KC_5,          KC_6,          KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_1,           KC_2,           KC_3,           KC_TRANSPARENT, TO(SYM),                                        KC_TRANSPARENT, KC_TRANSPARENT,         KC_1,          KC_2,          KC_3,          KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_0,                                                                                                                   KC_0, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
@@ -169,6 +181,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_EQUAL) SS_DELAY(100) SS_LSFT(SS_TAP(X_DOT)));
 
+    }
+    break;
+    case CLEAR_OS:
+    if (record->event.pressed) {
+        clear_oneshot_mods();
     }
     break;
   }
