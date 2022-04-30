@@ -4,7 +4,7 @@
 enum custom_keycodes {
   ST_MACRO_0,
   ST_MACRO_1,
-  CLEAR_OS,
+  CLEAR_MODS,
 };
 
 enum tap_dance_codes {
@@ -23,7 +23,7 @@ enum layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergodox_pretty(
-    OSL(MED_NAV), KC_TRANSPARENT, TG(MED_NAV), TG(SYM), KC_TRANSPARENT, KC_TRANSPARENT, CLEAR_OS,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TG(SYM), TG(MED_NAV), KC_TRANSPARENT, KC_F11,
+    OSL(MED_NAV), KC_TRANSPARENT, TG(MED_NAV), TG(SYM), KC_TRANSPARENT, KC_TRANSPARENT, CLEAR_MODS,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TG(SYM), TG(MED_NAV), KC_TRANSPARENT, KC_F11,
     OSL(SYM),          TD(DANCE_0),    KC_W,           KC_E,           KC_R,           KC_T,           TG(NUM_FUNC),                                          TG(MOUSE),          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           OSL(SYM),
     KC_ESC,         KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,      KC_QUOTE,
     OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,              KC_V,             KC_B,           TG(NUM),                                          TG(NUM),          KC_N,            KC_M, KC_COMMA, KC_DOT, KC_SLASH,OSM(MOD_LSFT),
@@ -183,9 +183,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     }
     break;
-    case CLEAR_OS:
+    case CLEAR_MODS:
     if (record->event.pressed) {
         clear_oneshot_mods();
+        clear_mods();
     }
     break;
   }
