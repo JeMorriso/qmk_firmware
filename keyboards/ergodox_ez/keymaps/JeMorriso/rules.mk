@@ -9,3 +9,5 @@ RGBLIGHT_ENABLE = no
 RGB_MATRIX_ENABLE = yes
 
 SRC = matrix.c
+
+LEADER_ENABLE = yes

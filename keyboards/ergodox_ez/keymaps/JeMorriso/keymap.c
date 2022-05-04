@@ -26,9 +26,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, TG(SYM), TG(NUM_FUNC), TG(NUM), TG(MED_NAV), KC_TRANSPARENT, CLEAR_MODS,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TG(MOUSE), TG(MED_NAV), TG(SYM), KC_F11,
     OSL(SYM),          TD(DANCE_0),    KC_W,           KC_E,           KC_R,           KC_T,           OSL(MED_NAV),                                          KC_TRANSPARENT,          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           OSL(SYM),
     KC_ESC,         KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,      KC_QUOTE,
-    OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,              KC_V,             KC_B,           OSL(NUM),                                          KC_TRANSPARENT,          KC_N,            KC_M, KC_COMMA, KC_DOT, KC_SLASH,OSM(MOD_LSFT),
+    OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,              KC_V,             KC_B,           KC_LEAD,                                          KC_LEAD,          KC_N,            KC_M, KC_COMMA, KC_DOT, KC_SLASH,OSM(MOD_LSFT),
     KC_DELETE,      OSM(MOD_LGUI),  OSM(MOD_MEH),   OSM(MOD_LALT),     OSM(MOD_LCTL),                                                                                               OSM(MOD_LCTL),  OSM(MOD_LALT),           OSM(MOD_MEH),      OSM(MOD_LGUI),       KC_TRANSPARENT,
-                                                                                                    OSL(NUM_FUNC), KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                    OSL(NUM), KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                     KC_SPACE,       KC_TAB,         LSFT(KC_TAB),   KC_TRANSPARENT, KC_ENTER,        KC_BACKSPACE
   ),
@@ -302,3 +302,29 @@ void dance_0_reset(qk_tap_dance_state_t *state, void *user_data) {
 qk_tap_dance_action_t tap_dance_actions[] = {
         [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
 };
+
+LEADER_EXTERNS();
+
+void matrix_scan_user(void) {
+  LEADER_DICTIONARY() {
+    leading = false;
+    leader_end();
+
+    SEQ_ONE_KEY(KC_F) {
+      // Anything you can do in a macro.
+      SEND_STRING("QMK is awesome.");
+    }
+    SEQ_TWO_KEYS(KC_D, KC_D) {
+      SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+    }
+    SEQ_THREE_KEYS(KC_D, KC_D, KC_S) {
+      SEND_STRING("https://start.duckduckgo.com\n");
+    }
+    SEQ_TWO_KEYS(KC_A, KC_S) {
+      register_code(KC_LGUI);
+      register_code(KC_S);
+      unregister_code(KC_S);
+      unregister_code(KC_LGUI);
+    }
+  }
+}
