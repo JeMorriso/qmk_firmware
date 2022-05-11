@@ -23,8 +23,8 @@ enum layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT, TG(SYM), TG(NUM_FUNC), TG(NUM), TG(MED_NAV), KC_TRANSPARENT, CLEAR_MODS,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TG(MOUSE), TG(MED_NAV), TG(SYM), KC_F11,
-    OSL(SYM),          TD(DANCE_0),    KC_W,           KC_E,           KC_R,           KC_T,           OSL(MED_NAV),                                          KC_TRANSPARENT,          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           OSL(SYM),
+    A(KC_F4), TG(SYM), TG(NUM_FUNC), TG(NUM), TG(MED_NAV), KC_TRANSPARENT, CLEAR_MODS,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TG(MOUSE), TG(MED_NAV), TG(SYM), KC_F11,
+    OSL(SYM),       KC_Q,    KC_W,           KC_E,           KC_R,           KC_T,           OSL(MED_NAV),                                          KC_TRANSPARENT,          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           OSL(SYM),
     KC_ESC,         KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,      KC_QUOTE,
     OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,              KC_V,             KC_B,           KC_LEAD,                                          KC_LEAD,          KC_N,            KC_M, KC_COMMA, KC_DOT, KC_SLASH,OSM(MOD_LSFT),
     KC_DELETE,      OSM(MOD_LGUI),  OSM(MOD_MEH),   OSM(MOD_LALT),     OSM(MOD_LCTL),                                                                                               OSM(MOD_LCTL),  OSM(MOD_LALT),           OSM(MOD_MEH),      OSM(MOD_LGUI),       KC_TRANSPARENT,
@@ -308,23 +308,70 @@ LEADER_EXTERNS();
 void matrix_scan_user(void) {
   LEADER_DICTIONARY() {
     leading = false;
-    leader_end();
 
-    SEQ_ONE_KEY(KC_F) {
-      // Anything you can do in a macro.
-      SEND_STRING("QMK is awesome.");
+    SEQ_ONE_KEY(KC_A) {
+      register_code16(G(C(A(KC_A))));
+      unregister_code16(G(C(A(KC_A))));
     }
+    SEQ_ONE_KEY(KC_N) {
+      register_code16(G(C(A(KC_N))));
+      unregister_code16(G(C(A(KC_N))));
+    }
+    SEQ_ONE_KEY(KC_K) {
+      register_code16(G(C(A(KC_K))));
+      unregister_code16(G(C(A(KC_K))));
+    }
+    SEQ_ONE_KEY(KC_T) {
+      register_code16(G(C(A(KC_T))));
+      unregister_code16(G(C(A(KC_T))));
+    }
+    SEQ_ONE_KEY(KC_V) {
+      register_code16(G(C(A(KC_V))));
+      unregister_code16(G(C(A(KC_V))));
+    }
+    SEQ_ONE_KEY(KC_S) {
+      register_code16(G(C(A(KC_S))));
+      unregister_code16(G(C(A(KC_S))));
+    }
+    SEQ_ONE_KEY(KC_Q) {
+      register_code16(G(C(A(KC_Q))));
+      unregister_code16(G(C(A(KC_Q))));
+    }
+    SEQ_ONE_KEY(KC_G) {
+      register_code16(G(C(A(KC_G))));
+      unregister_code16(G(C(A(KC_G))));
+    }
+    SEQ_ONE_KEY(KC_W) {
+      register_code16(G(C(A(KC_W))));
+      unregister_code16(G(C(A(KC_W))));
+    }
+    SEQ_ONE_KEY(KC_R) {
+      register_code16(G(C(A(KC_R))));
+      unregister_code16(G(C(A(KC_R))));
+    }
+    SEQ_ONE_KEY(KC_C) {
+      register_code16(G(C(A(KC_C))));
+      unregister_code16(G(C(A(KC_C))));
+    }
+
+    SEQ_TWO_KEYS(KC_N, KC_D) {
+      register_code16(G(C(A(KC_DOT))));
+      unregister_code16(G(C(A(KC_DOT))));
+    }
+    SEQ_TWO_KEYS(KC_K, KC_J) {
+      register_code16(G(C(A(KC_J))));
+      unregister_code16(G(C(A(KC_J))));
+    }
+    SEQ_TWO_KEYS(KC_N, KC_N) {
+      register_code16(G(C(A(KC_O))));
+      unregister_code16(G(C(A(KC_O))));
+    }
+
+    // I like this idea
     SEQ_TWO_KEYS(KC_D, KC_D) {
       SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
     }
-    SEQ_THREE_KEYS(KC_D, KC_D, KC_S) {
-      SEND_STRING("https://start.duckduckgo.com\n");
-    }
-    SEQ_TWO_KEYS(KC_A, KC_S) {
-      register_code(KC_LGUI);
-      register_code(KC_S);
-      unregister_code(KC_S);
-      unregister_code(KC_LGUI);
-    }
+
+    leader_end();
   }
 }
