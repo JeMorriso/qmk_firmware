@@ -22,14 +22,14 @@ enum layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergodox_pretty(
-    A(KC_F4), TG(SYM), TG(NUM_FUNC), TG(NUM), TG(MED_NAV), KC_TRANSPARENT, CLEAR_MODS,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TG(MOUSE), TG(MED_NAV), TG(SYM), KC_F11,
-    OSL(SYM),       KC_Q,    KC_W,           KC_E,           KC_R,           KC_T,           OSL(MED_NAV),                                          KC_TRANSPARENT,          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           OSL(SYM),
+    KC_TRANSPARENT, OSL(MED_NAV), TG(MED_NAV), TG(NUM), OSL(NUM), TG(SYM), KC_TRANSPARENT,                                 A(KC_F4), KC_TRANSPARENT, KC_TRANSPARENT, TG(MOUSE), KC_TRANSPARENT, TG(SYM), KC_F11,
+    OSL(SYM),       KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           TG(NUM_FUNC),                                          KC_TRANSPARENT,          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           OSL(SYM),
     KC_ESC,         KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCOLON,      KC_QUOTE,
-    OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,              KC_V,             KC_B,           KC_LEAD,                                          KC_LEAD,          KC_N,            KC_M, KC_COMMA, KC_DOT, KC_SLASH,OSM(MOD_LSFT),
-    KC_DELETE,      OSM(MOD_LGUI),  OSM(MOD_MEH),   OSM(MOD_LALT),     OSM(MOD_LCTL),                                                                                               OSM(MOD_LCTL),  OSM(MOD_LALT),           OSM(MOD_MEH),      OSM(MOD_LGUI),       KC_TRANSPARENT,
-                                                                                                    OSL(NUM), KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,           KC_LEAD,                                          KC_LEAD,          KC_N,            KC_M, KC_COMMA, KC_DOT, KC_SLASH,OSM(MOD_LSFT),
+    KC_TRANSPARENT, OSM(MOD_LGUI),  OSM(MOD_MEH),   OSM(MOD_LALT),  KC_LEAD,                                                                                               OSM(MOD_LCTL),  OSM(MOD_LALT),           OSM(MOD_MEH),      OSM(MOD_LGUI),       CLEAR_MODS,
+                                                                                                    OSL(NUM_FUNC), KC_TRANSPARENT, KC_TRANSPARENT, KC_DELETE,
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                    KC_SPACE,       KC_TAB,         LSFT(KC_TAB),   KC_TRANSPARENT, KC_ENTER,        KC_BACKSPACE
+                                                                                    KC_SPACE,       KC_BACKSPACE,   KC_TRANSPARENT, KC_TAB,         LSFT(KC_TAB),   KC_ENTER
   ),
   [SYM] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -354,6 +354,10 @@ void matrix_scan_user(void) {
     SEQ_TWO_KEYS(KC_N, KC_N) {
       register_code16(G(C(A(KC_O))));
       unregister_code16(G(C(A(KC_O))));
+    }
+    SEQ_TWO_KEYS(KC_K, KC_K) {
+      register_code16(G(C(A(S(KC_K)))));
+      unregister_code16(G(C(A(S(KC_K)))));
     }
 
     // I like this idea
