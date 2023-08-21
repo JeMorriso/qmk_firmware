@@ -2,9 +2,10 @@
 #include "version.h"
 
 #define BASE 0
-#define FUN_MED 1
-#define ONESHOT 2
-#define WARP 3
+#define WARP 1
+#define FUN_MED 2
+#define ONESHOT 3
+#define ONE_DUMB 4
 
 #define OSM_A   OSM(MOD_LALT)
 #define OSM_AC  OSM(MOD_LALT|MOD_LCTL)
@@ -22,22 +23,34 @@
 #define OSM_MS  OSM(MOD_LGUI|MOD_LSFT)
 #define OSM_S   OSM(MOD_LSFT)
 
+#define OSL_OSL   OSL(ONESHOT)
+#define OSL_OSR   OSL(ONE_DUMB)
+
 enum custom_keycodes {
-    ST_MACRO_0,
-    WARP_ON,
-    WARP_OFF
+    WARP_ON = SAFE_RANGE, // not exactly sure what SAFE_RANGE does but if not included these macros are buggy / broken
+    WARP_OFF,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergodox_pretty(
-    KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_BACKSLASH,                                   KC_EQUAL,       KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,
-    KC_TAB,         KC_Q,           HYPR_T(KC_W),   MEH_T(KC_E),    KC_R,           KC_T,           KC_LBRC,                                        KC_RBRC,        KC_Y,           KC_U,           MEH_T(KC_I),    HYPR_T(KC_O),   KC_P,           KC_BACKSPACE,
+    KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           _______,                                        _______,        KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,
+    KC_TAB,         KC_Q,           HYPR_T(KC_W),   MEH_T(KC_E),    KC_R,           KC_T,           KC_UP,                                          KC_LEFT,        KC_Y,           KC_U,           MEH_T(KC_I),    HYPR_T(KC_O),   KC_P,           KC_BACKSPACE,
     KC_ESCAPE,      CTL_T(KC_A),    OPT_T(KC_S),    CMD_T(KC_D),    SFT_T(KC_F),    KC_G,                                                                           KC_H,           SFT_T(KC_J),    CMD_T(KC_K),    OPT_T(KC_L),    CTL_T(KC_SCLN), KC_QUOTE,
-    OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,           KC_V,           OPT_T(KC_B),    OSM(MOD_MEH),                                   OSM(MOD_HYPR),  KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_ENTER,
-    _______,        ST_MACRO_0,     _______,        WARP_ON,        OSL(2),                                                                                                         OSL(2),         MEH(KC_R),      _______,        _______,        KC_DELETE,
-                                                                                                    OSM(MOD_LALT),  _______,        _______,        TG(1),
+    KC_EQUAL,       KC_Z,           KC_X,           KC_C,           KC_V,           OPT_T(KC_B),    KC_DOWN,                                        KC_RIGHT,       KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_ENTER,
+    _______,        KC_LBRC,        KC_RBRC,        _______,        _______,                                                                                                        _______,        _______,        _______,        KC_BACKSLASH,   KC_DELETE,
+                                                                                                    WARP_ON,        _______,        TG(FUN_MED),    MEH(KC_R),
                                                                                                                     QK_AREP,        _______,
-                                                                                    LT(1,KC_SPACE), OSM(MOD_LGUI),  QK_REP,         CW_TOGG,        OSM(MOD_LCTL),  OSM(MOD_LSFT)
+                                                                              LT(FUN_MED,KC_SPACE), OSL_OSL,        QK_REP,         CW_TOGG,        OSL_OSR,        OSM(MOD_LSFT)
+  ),
+  [WARP] = LAYOUT_ergodox_pretty(
+    _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
+    _______,        _______,        KC_W,           KC_E,           _______,        _______,        _______,                                        _______,        _______,        _______,        KC_I,           KC_O,           _______,        _______,
+    WARP_OFF,       KC_A,           KC_S,           KC_D,           KC_F,           _______,                                                                        _______,        KC_J,           KC_K,           KC_L,           KC_SCLN,        _______,
+    _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
+    _______,        _______,        _______,        _______,        _______,                                                                                                        _______,        _______,        _______,        _______,        _______,
+                                                                                                    WARP_OFF,       _______,        _______,        _______,
+                                                                                                                    _______,        _______,
+                                                                                    _______,        _______,        _______,        _______,        _______,        _______
   ),
   [FUN_MED] = LAYOUT_ergodox_pretty(
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        KC_VOLU,
@@ -51,48 +64,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [ONESHOT] = LAYOUT_ergodox_pretty(
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
-    OSL(1),         OSM_AC,         OSM_HYP,        OSM_MEH,        OSM_CM,         OSM_ACM,        _______,                                        _______,        OSM_ACM,        OSM_CM,         OSM_MEH,        OSM_HYP,        OSM_AC,         OSL(1),
-    OSL(1),         OSM_C,          OSM_A,          OSM_M,          OSM_S,          OSM_CMS,                                                                        OSM_CMS,        OSM_S,          OSM_M,          OSM_A,          OSM_C,          OSL(1),
+    _______,        OSM_AC,         OSM_HYP,        OSM_MEH,        OSM_CM,         OSM_ACM,        _______,                                        _______,        OSM_ACM,        OSM_CM,         OSM_MEH,        OSM_HYP,        OSM_AC,         _______,
+    OSL(FUN_MED),   OSM_C,          OSM_A,          OSM_M,          OSM_S,          OSM_CMS,                                                                        OSM_CMS,        OSM_S,          OSM_M,          OSM_A,          OSM_C,          OSL(FUN_MED),
     _______,        OSM_CS,         OSM_AS,         OSM_MS,         OSM_AM,         OSM_AMS,        _______,                                        _______,        OSM_AMS,        OSM_AM,         OSM_MS,         OSM_AS,         OSM_CS,         _______,
     _______,        _______,        _______,        _______,        _______,                                                                                                        _______,        _______,        _______,        _______,        _______,
                                                                                                     _______,        _______,        _______,        _______,
                                                                                                                     _______,        _______,
                                                                                     _______,        _______,        _______,        _______,        _______,        _______
   ),
-  [WARP] = LAYOUT_ergodox_pretty(
+  [ONE_DUMB] = LAYOUT_ergodox_pretty(
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
-    _______,        _______,        KC_W,           KC_E,           _______,        _______,        _______,                                        _______,        _______,        _______,        KC_I,           KC_O,           _______,        _______,
-    WARP_OFF,       KC_A,           KC_S,           KC_D,           KC_F,           _______,                                                                        _______,        KC_J,           KC_K,           KC_L,           KC_SCLN,        _______,
-    _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
-    _______,        _______,        _______,        WARP_OFF,       _______,                                                                                                        _______,        _______,        _______,        _______,        _______,
+    _______,        OSM_AC,         OSM_HYP,        OSM_MEH,        OSM_CM,         OSM_ACM,        _______,                                        _______,        OSM_ACM,        OSM_CM,         OSM_MEH,        OSM_HYP,        OSM_AC,         _______,
+    OSL(FUN_MED),   OSM_C,          OSM_A,          OSM_M,          OSM_S,          OSM_CMS,                                                                        OSM_CMS,        OSM_S,          OSM_M,          OSM_A,          OSM_C,          OSL(FUN_MED),
+    _______,        OSM_CS,         OSM_AS,         OSM_MS,         OSM_AM,         OSM_AMS,        _______,                                        _______,        OSM_AMS,        OSM_AM,         OSM_MS,         OSM_AS,         OSM_CS,         _______,
+    _______,        _______,        _______,        _______,        _______,                                                                                                        _______,        _______,        _______,        _______,        _______,
                                                                                                     _______,        _______,        _______,        _______,
                                                                                                                     _______,        _______,
                                                                                     _______,        _______,        _______,        _______,        _______,        _______
   ),
 };
 
-const uint16_t PROGMEM launcher[] = { LT(1,KC_SPACE), OSM(MOD_LSFT), COMBO_END};
-const uint16_t PROGMEM warp[] = { LT(1,KC_SPACE), OSM(MOD_LCTL), COMBO_END};
-const uint16_t PROGMEM homerow[] = { OSM(MOD_LGUI), OSM(MOD_LCTL), COMBO_END};
-const uint16_t PROGMEM raycast[] = { LT(1,KC_SPACE), OSL(2), COMBO_END};
-const uint16_t PROGMEM toggle_1[] = { OSM(MOD_LSFT), OSM(MOD_LGUI), COMBO_END};
+const uint16_t PROGMEM homerow[] = { LT(FUN_MED,KC_SPACE), OSL_OSR, COMBO_END};
+const uint16_t PROGMEM enter[] = { LT(FUN_MED,KC_SPACE), OSM(MOD_LSFT), COMBO_END};
+const uint16_t PROGMEM launcher[] = { OSL_OSL, OSL_OSR, COMBO_END};
+const uint16_t PROGMEM warp[] = { OSL_OSL, OSM(MOD_LSFT), COMBO_END};
 
-combo_t key_combos[5] = {
+/* const uint16_t PROGMEM raycast[] = { LT(1,KC_SPACE), OSM(MOD_LCTL), COMBO_END}; */
+/* const uint16_t PROGMEM toggle_1[] = { OSL(ONESHOT), OSM(MOD_LCTL), COMBO_END}; */
+    /* COMBO(raycast, LALT(KC_SPACE)), */
+    /* COMBO(toggle_1, TG(1)), */
+
+combo_t key_combos[] = {
+    COMBO(homerow, MEH(KC_R)),
+    COMBO(enter, KC_ENTER),
     COMBO(launcher, MEH(KC_A)),
     COMBO(warp, WARP_ON),
-    COMBO(homerow, MEH(KC_R)),
-    COMBO(raycast, LALT(KC_SPACE)),
-    COMBO(toggle_1, TG(1)),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case ST_MACRO_0:
-        if (record->event.pressed) {
-            SEND_STRING("JER");
-        }
-        break;
-
     case WARP_ON:
         if (record->event.pressed) {
             layer_on(WARP);
