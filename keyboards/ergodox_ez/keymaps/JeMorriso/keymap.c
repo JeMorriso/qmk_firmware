@@ -2,7 +2,7 @@
 #include "version.h"
 
 #define BASE 0
-#define NAV_FUN_MED 1
+#define FUN_MED 1
 #define ONESHOT 2
 #define WARP 3
 
@@ -33,21 +33,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_BACKSLASH,                                   KC_EQUAL,       KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,
     KC_TAB,         KC_Q,           HYPR_T(KC_W),   MEH_T(KC_E),    KC_R,           KC_T,           KC_LBRC,                                        KC_RBRC,        KC_Y,           KC_U,           MEH_T(KC_I),    HYPR_T(KC_O),   KC_P,           KC_BACKSPACE,
     KC_ESCAPE,      CTL_T(KC_A),    OPT_T(KC_S),    CMD_T(KC_D),    SFT_T(KC_F),    KC_G,                                                                           KC_H,           SFT_T(KC_J),    CMD_T(KC_K),    OPT_T(KC_L),    CTL_T(KC_SCLN), KC_QUOTE,
-    OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,           OSM(MOD_MEH),                                   OSM(MOD_HYPR),  KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_ENTER,
+    OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,           KC_V,           OPT_T(KC_B),    OSM(MOD_MEH),                                   OSM(MOD_HYPR),  KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_ENTER,
     _______,        ST_MACRO_0,     _______,        WARP_ON,        OSL(2),                                                                                                         OSL(2),         MEH(KC_R),      _______,        _______,        KC_DELETE,
                                                                                                     OSM(MOD_LALT),  _______,        _______,        TG(1),
                                                                                                                     QK_AREP,        _______,
                                                                                     LT(1,KC_SPACE), OSM(MOD_LGUI),  QK_REP,         CW_TOGG,        OSM(MOD_LCTL),  OSM(MOD_LSFT)
   ),
-  [NAV_FUN_MED] = LAYOUT_ergodox_pretty(
+  [FUN_MED] = LAYOUT_ergodox_pretty(
+    _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        KC_VOLU,
     _______,        KC_F14,         KC_F15,         LCTL(KC_UP),    LGUI(KC_SPACE), LCTL(KC_F5),    _______,                                        _______,        LALT(KC_F6),    KC_MPRV,        KC_MPLY,        KC_MNXT,        KC_MUTE,        KC_VOLD,
-    _______,        _______,        KC_HOME,        KC_PGUP,        KC_PGDN,        KC_END,         _______,                                        _______,        KC_MS_WH_RIGHT, KC_MS_WH_UP,    KC_MS_WH_DOWN,  KC_MS_WH_LEFT,  _______,        KC_VOLU,
-    TO(0),          _______,        KC_LEFT,        KC_UP,          KC_DOWN,        KC_RIGHT,                                                                       KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_UP,       KC_MS_RIGHT,    _______,        KC_F12,
-    _______,        KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          _______,                                        _______,        KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,
+    TO(BASE),       KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,
+    _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
     _______,        _______,        _______,        _______,        _______,                                                                                                        _______,        _______,        _______,        _______,        _______,
                                                                                                     _______,        _______,        _______,        _______,
                                                                                                                     _______,        _______,
-                                                                                    KC_MS_BTN1,     KC_MS_BTN2,     _______,        _______,        KC_MS_BTN2,     KC_MS_BTN1
+                                                                                    _______,        _______,        _______,        _______,        _______,        _______
   ),
   [ONESHOT] = LAYOUT_ergodox_pretty(
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
