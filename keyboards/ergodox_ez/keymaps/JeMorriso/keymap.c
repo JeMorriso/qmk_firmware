@@ -120,3 +120,71 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+static const uint8_t max_led_value = 20;
+
+void led_1_on(void) {
+  ergodox_right_led_1_on();
+  ergodox_right_led_1_set(max_led_value);
+}
+
+void led_2_on(void) {
+  ergodox_right_led_2_on();
+  ergodox_right_led_2_set(max_led_value);
+}
+
+void led_3_on(void) {
+  ergodox_right_led_3_on();
+  ergodox_right_led_3_set(max_led_value);
+}
+
+void led_1_off(void) {
+  ergodox_right_led_1_off();
+}
+
+void led_2_off(void) {
+  ergodox_right_led_2_off();
+}
+
+void led_3_off(void) {
+  ergodox_right_led_3_off();
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    uint8_t layer = get_highest_layer(state);
+
+    ergodox_board_led_off();
+    ergodox_right_led_1_off();
+    ergodox_right_led_2_off();
+    ergodox_right_led_3_off();
+    switch (layer) {
+        case 1:
+            led_1_on();
+            break;
+        case 2:
+            led_2_on();
+            break;
+        case 3:
+            led_3_on();
+            break;
+        case 4:
+            led_1_on();
+            led_2_on();
+            break;
+        case 5:
+            led_1_on();
+            led_3_on();
+            break;
+        case 6:
+            led_2_on();
+            led_3_on();
+            break;
+        case 7:
+            led_1_on();
+            led_2_on();
+            led_3_on();
+            break;
+        default:
+            break;
+    }
+    return state;
+};
