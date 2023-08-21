@@ -1,34 +1,34 @@
-/*
-  Set any config.h overrides for your specific keymap here.
-  See config.h options at https://docs.qmk.fm/#/config_options?id=the-configh-file
-*/
-// #define ORYX_CONFIGURATOR
-#undef TAPPING_TERM
-#define TAPPING_TERM 190
-
 #define ONESHOT_TAP_TOGGLE 2
 
 #undef ONESHOT_TIMEOUT
-#define ONESHOT_TIMEOUT 1000
+#define ONESHOT_TIMEOUT 1500
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #undef MOUSEKEY_INTERVAL
-#define MOUSEKEY_INTERVAL 11
+#define MOUSEKEY_INTERVAL 13
+
+#undef MOUSEKEY_WHEEL_DELAY
+#define MOUSEKEY_WHEEL_DELAY 0
 
 #undef MOUSEKEY_DELAY
-#define MOUSEKEY_DELAY 4
+#define MOUSEKEY_DELAY 2
 
 #undef MOUSEKEY_MAX_SPEED
 #define MOUSEKEY_MAX_SPEED 11
 
-#undef MOUSEKEY_TIME_TO_MAX
-#define MOUSEKEY_TIME_TO_MAX 35
+#undef MOUSEKEY_WHEEL_INTERVAL
+#define MOUSEKEY_WHEEL_INTERVAL 84
 
-// #define FIRMWARE_VERSION u8"QqoPD/LyAyA"
+#undef MOUSEKEY_WHEEL_MAX_SPEED
+#define MOUSEKEY_WHEEL_MAX_SPEED 9
+
+#undef MOUSEKEY_WHEEL_TIME_TO_MAX
+#define MOUSEKEY_WHEEL_TIME_TO_MAX 30
+
+/* #define FIRMWARE_VERSION u8"0L9WQ/v735l" */
+#define RAW_USAGE_PAGE 0xFF60
+#define RAW_USAGE_ID 0x61
+#define LAYER_STATE_8BIT
+#define COMBO_COUNT 4
+
 #define RGB_MATRIX_STARTUP_SPD 60
-
-#define IGNORE_MOD_TAP_INTERRUPT
-#define PERMISSIVE_HOLD
-
-// #define PERMISSIVE_HOLD_PER_KEY
-// #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
