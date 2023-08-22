@@ -1,3 +1,8 @@
+// these settings from downloaded source from oryx
+#define ORYX_CONFIGURATOR
+#define RAW_USAGE_PAGE 0xFF60
+#define RAW_USAGE_ID 0x61
+
 #define ONESHOT_TAP_TOGGLE 2
 
 #undef ONESHOT_TIMEOUT
@@ -5,3 +10,7 @@
 
 #define AUTO_SHIFT_TIMEOUT 150
 #define NO_AUTO_SHIFT_ALPHA
+
+#define RGB_MATRIX_DEFAULT_HUE 180
+#define RGB_MATRIX_DEFAULT_SPD 0
+/* #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_REACTIVE */
