@@ -28,17 +28,18 @@
 
 // left thumb
 #define TL_1 LT(FUN_MED,KC_SPACE)
-#define TL_2 OSL(ONESHOT)
-#define TL_3 KC_F18
+#define TL_2 KC_ENTER
+#define TL_3 OSL(ONESHOT)
 
 // right thumb
-#define TR_1 OSM(MOD_LSFT)
-#define TR_2 OSL(ONE_DUMB)
-#define TR_3 KC_F19
+#define TR_1 KC_BACKSPACE
+#define TR_2 KC_TAB
+#define TR_3 OSL(ONE_DUMB)
 
 enum custom_keycodes {
     WARP_ON = SAFE_RANGE, // not exactly sure what SAFE_RANGE does but if not included these macros are buggy / broken
     WARP_OFF,
+    OS_FN,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -46,11 +47,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           _______,                                        _______,        KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,
     KC_TAB,         KC_Q,           HYPR_T(KC_W),   MEH_T(KC_E),    KC_R,           KC_T,           KC_UP,                                          KC_LEFT,        KC_Y,           KC_U,           MEH_T(KC_I),    HYPR_T(KC_O),   KC_P,           KC_BACKSPACE,
     KC_ESCAPE,      CTL_T(KC_A),    OPT_T(KC_S),    CMD_T(KC_D),    SFT_T(KC_F),    KC_G,                                                                           KC_H,           SFT_T(KC_J),    CMD_T(KC_K),    OPT_T(KC_L),    CTL_T(KC_SCLN), KC_QUOTE,
-    KC_EQUAL,       KC_Z,           KC_X,           KC_C,           KC_V,           OPT_T(KC_B),    KC_DOWN,                                        KC_RIGHT,       KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_ENTER,
-    _______,        KC_LBRC,        KC_RBRC,        _______,        _______,                                                                                                        _______,        _______,        _______,        KC_BACKSLASH,   KC_DELETE,
+    OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,           KC_V,           OPT_T(KC_B),    KC_DOWN,                                        KC_RIGHT,       KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       OSM(MOD_LSFT),
+    _______,        KC_LBRC,        KC_RBRC,        _______,        OSL_OSL,                                                                                                        OSL_OSR,        _______,        KC_EQUAL,       KC_BACKSLASH,   KC_DELETE,
                                                                                                     WARP_ON,        _______,        TG(FUN_MED),    MEH(KC_R),
                                                                                                                     QK_AREP,        _______,
-                                                                              LT(FUN_MED,KC_SPACE), OSL_OSL,        QK_REP,         CW_TOGG,        OSL_OSR,        OSM(MOD_LSFT)
+                                                                              LT(FUN_MED,KC_SPACE), KC_ENTER,       QK_REP,         CW_TOGG,        KC_TAB,         KC_BACKSPACE
   ),
   [WARP] = LAYOUT_ergodox_pretty(
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
