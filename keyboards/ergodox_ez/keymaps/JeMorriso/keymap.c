@@ -94,73 +94,69 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
-const uint16_t PROGMEM enter[] = { TL_1, TR_1, COMBO_END};
-const uint16_t PROGMEM homerow[] = { TL_1, TR_2, COMBO_END};
+const uint16_t PROGMEM enter[]   = {TL_1, TR_1, COMBO_END};
+const uint16_t PROGMEM homerow[] = {TL_1, TR_2, COMBO_END};
 
-const uint16_t PROGMEM warp[] = { TL_2, TR_1, COMBO_END};
-const uint16_t PROGMEM launcher[] = { TL_2, TR_2, COMBO_END};
+const uint16_t PROGMEM warp[]     = {TL_2, TR_1, COMBO_END};
+const uint16_t PROGMEM launcher[] = {TL_2, TR_2, COMBO_END};
 
-const uint16_t PROGMEM raycast[] = { TL_1, TR_3, COMBO_END};
+const uint16_t PROGMEM raycast[] = {TL_1, TR_3, COMBO_END};
 
 /* const uint16_t PROGMEM raycast[] = { LT(1,KC_SPACE), OSM(MOD_LCTL), COMBO_END}; */
 /* const uint16_t PROGMEM toggle_1[] = { OSL(ONESHOT), OSM(MOD_LCTL), COMBO_END}; */
-    /* COMBO(raycast, LALT(KC_SPACE)), */
-    /* COMBO(toggle_1, TG(1)), */
+/* COMBO(raycast, LALT(KC_SPACE)), */
+/* COMBO(toggle_1, TG(1)), */
 
 combo_t key_combos[] = {
-    COMBO(enter, KC_ENTER),
-    COMBO(homerow, MEH(KC_R)),
-    COMBO(warp, WARP_ON),
-    COMBO(launcher, MEH(KC_A)),
-    COMBO(raycast, LALT(KC_SPACE)),
+    COMBO(enter, KC_ENTER), COMBO(homerow, MEH(KC_R)), COMBO(warp, WARP_ON), COMBO(launcher, MEH(KC_A)), COMBO(raycast, LALT(KC_SPACE)),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case WARP_ON:
-        if (record->event.pressed) {
-            layer_on(WARP);
-            SEND_STRING(SS_LCTL(SS_LALT(SS_LSFT("w"))));
-        }
-        break;
+    switch (keycode) {
+        case WARP_ON:
+            if (record->event.pressed) {
+                layer_on(WARP);
+                SEND_STRING(SS_LCTL(SS_LALT(SS_LSFT("w"))));
+            }
+            break;
 
-    case WARP_OFF:
-        if (record->event.pressed) {
-            layer_off(WARP);
-            tap_code(KC_ESC);
-        }
-        break;
-  }
-  return true;
+        case WARP_OFF:
+            if (record->event.pressed) {
+                layer_off(WARP);
+                tap_code(KC_ESC);
+            }
+            break;
+    }
+    return true;
 }
 
 static const uint8_t max_led_value = 20;
 
 void led_1_on(void) {
-  ergodox_right_led_1_on();
-  ergodox_right_led_1_set(max_led_value);
+    ergodox_right_led_1_on();
+    ergodox_right_led_1_set(max_led_value);
 }
 
 void led_2_on(void) {
-  ergodox_right_led_2_on();
-  ergodox_right_led_2_set(max_led_value);
+    ergodox_right_led_2_on();
+    ergodox_right_led_2_set(max_led_value);
 }
 
 void led_3_on(void) {
-  ergodox_right_led_3_on();
-  ergodox_right_led_3_set(max_led_value);
+    ergodox_right_led_3_on();
+    ergodox_right_led_3_set(max_led_value);
 }
 
 void led_1_off(void) {
-  ergodox_right_led_1_off();
+    ergodox_right_led_1_off();
 }
 
 void led_2_off(void) {
-  ergodox_right_led_2_off();
+    ergodox_right_led_2_off();
 }
 
 void led_3_off(void) {
-  ergodox_right_led_3_off();
+    ergodox_right_led_3_off();
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
