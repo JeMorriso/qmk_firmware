@@ -39,6 +39,7 @@
 enum custom_keycodes {
     WARP_ON = SAFE_RANGE, // not exactly sure what SAFE_RANGE does but if not included these macros are buggy / broken
     WARP_OFF,
+    OS_FN,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -47,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,         KC_Q,           HYPR_T(KC_W),   MEH_T(KC_E),    KC_R,           KC_T,           KC_UP,                                          KC_LEFT,        KC_Y,           KC_U,           MEH_T(KC_I),    HYPR_T(KC_O),   KC_P,           KC_BACKSPACE,
     KC_ESCAPE,      CTL_T(KC_A),    OPT_T(KC_S),    CMD_T(KC_D),    SFT_T(KC_F),    KC_G,                                                                           KC_H,           SFT_T(KC_J),    CMD_T(KC_K),    OPT_T(KC_L),    CTL_T(KC_SCLN), KC_QUOTE,
     KC_EQUAL,       KC_Z,           KC_X,           KC_C,           KC_V,           OPT_T(KC_B),    KC_DOWN,                                        KC_RIGHT,       KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_ENTER,
-    _______,        KC_LBRC,        KC_RBRC,        _______,        _______,                                                                                                        _______,        _______,        _______,        KC_BACKSLASH,   KC_DELETE,
+    OS_FN,          KC_LBRC,        KC_RBRC,        _______,        KC_F18,                                                                                                         KC_F19,         _______,        _______,        KC_BACKSLASH,   KC_DELETE,
                                                                                                     WARP_ON,        _______,        TG(FUN_MED),    MEH(KC_R),
                                                                                                                     QK_AREP,        _______,
                                                                               LT(FUN_MED,KC_SPACE), OSL_OSL,        QK_REP,         CW_TOGG,        OSL_OSR,        OSM(MOD_LSFT)
@@ -115,6 +116,38 @@ combo_t key_combos[] = {
     COMBO(raycast, LALT(KC_SPACE)),
 };
 
+uint8_t timer = 0;
+
+void disable_oneshot_layer(void) {
+    clear_oneshot_layer_state(ONESHOT_PRESSED);
+    timer = 0;
+}
+
+void check_disable_oneshot(uint16_t keycode) {
+    switch (keycode) {
+        case OS_FN:
+            break;
+        default:
+            disable_oneshot_layer();
+    }
+}
+
+// Custom oneshot timeout
+
+bool custom_oneshots_expired(void) {
+    return timer > 0 && (timer_elapsed(timer) > ONESHOT_TIMEOUT);
+}
+
+void check_oneshot_timeout(void) {
+    if (custom_oneshots_expired()) {
+        disable_oneshot_layer();
+    }
+}
+
+void matrix_scan_user(void) {
+    check_oneshot_timeout();
+}
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case WARP_ON:
@@ -130,7 +163,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             tap_code(KC_ESC);
         }
         break;
+
+    case OS_FN:
+        if (record->event.pressed) {
+            set_oneshot_layer(FUN_MED, ONESHOT_START);
+            timer = timer_read();
+        }
+        /*     else { */
+        /*     clear_oneshot_layer_state(ONESHOT_PRESSED); */
+        /* } */
+        break;
   }
+
+  check_disable_oneshot(keycode);
   return true;
 }
 
