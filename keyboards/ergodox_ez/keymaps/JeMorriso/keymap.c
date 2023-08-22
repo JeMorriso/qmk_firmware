@@ -26,6 +26,16 @@
 #define OSL_OSL   OSL(ONESHOT)
 #define OSL_OSR   OSL(ONE_DUMB)
 
+// left thumb
+#define TL_1 LT(FUN_MED,KC_SPACE)
+#define TL_2 OSL(ONESHOT)
+#define TL_3 KC_F18
+
+// right thumb
+#define TR_1 OSM(MOD_LSFT)
+#define TR_2 OSL(ONE_DUMB)
+#define TR_3 KC_F19
+
 enum custom_keycodes {
     WARP_ON = SAFE_RANGE, // not exactly sure what SAFE_RANGE does but if not included these macros are buggy / broken
     WARP_OFF,
@@ -84,10 +94,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
-const uint16_t PROGMEM homerow[] = { LT(FUN_MED,KC_SPACE), OSL_OSR, COMBO_END};
-const uint16_t PROGMEM enter[] = { LT(FUN_MED,KC_SPACE), OSM(MOD_LSFT), COMBO_END};
-const uint16_t PROGMEM launcher[] = { OSL_OSL, OSL_OSR, COMBO_END};
-const uint16_t PROGMEM warp[] = { OSL_OSL, OSM(MOD_LSFT), COMBO_END};
+const uint16_t PROGMEM enter[] = { TL_1, TR_1, COMBO_END};
+const uint16_t PROGMEM homerow[] = { TL_1, TR_2, COMBO_END};
+
+const uint16_t PROGMEM warp[] = { TL_2, TR_1, COMBO_END};
+const uint16_t PROGMEM launcher[] = { TL_2, TR_2, COMBO_END};
+
+const uint16_t PROGMEM raycast[] = { TL_1, TR_3, COMBO_END};
 
 /* const uint16_t PROGMEM raycast[] = { LT(1,KC_SPACE), OSM(MOD_LCTL), COMBO_END}; */
 /* const uint16_t PROGMEM toggle_1[] = { OSL(ONESHOT), OSM(MOD_LCTL), COMBO_END}; */
@@ -95,10 +108,11 @@ const uint16_t PROGMEM warp[] = { OSL_OSL, OSM(MOD_LSFT), COMBO_END};
     /* COMBO(toggle_1, TG(1)), */
 
 combo_t key_combos[] = {
-    COMBO(homerow, MEH(KC_R)),
     COMBO(enter, KC_ENTER),
-    COMBO(launcher, MEH(KC_A)),
+    COMBO(homerow, MEH(KC_R)),
     COMBO(warp, WARP_ON),
+    COMBO(launcher, MEH(KC_A)),
+    COMBO(raycast, LALT(KC_SPACE)),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
