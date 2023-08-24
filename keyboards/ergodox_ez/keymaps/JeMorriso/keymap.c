@@ -95,11 +95,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
-const uint16_t PROGMEM enter[]   = {TL_1, TR_1, COMBO_END};
-const uint16_t PROGMEM homerow[] = {TL_1, TR_2, COMBO_END};
-
+// thumbs
+const uint16_t PROGMEM launcher[] = {TL_1, TR_1, COMBO_END};
+const uint16_t PROGMEM raycast[] = {TL_1, TR_2, COMBO_END};
 const uint16_t PROGMEM warp[]     = {TL_2, TR_1, COMBO_END};
-const uint16_t PROGMEM launcher[] = {TL_2, TR_2, COMBO_END};
+const uint16_t PROGMEM homerow[] = {TL_2, TR_2, COMBO_END};
 
 const uint16_t PROGMEM raycast[] = {TL_1, TR_3, COMBO_END};
 
@@ -109,7 +109,10 @@ const uint16_t PROGMEM raycast[] = {TL_1, TR_3, COMBO_END};
 /* COMBO(toggle_1, TG(1)), */
 
 combo_t key_combos[] = {
-    COMBO(enter, KC_ENTER), COMBO(homerow, MEH(KC_R)), COMBO(warp, WARP_ON), COMBO(launcher, MEH(KC_A)), COMBO(raycast, LALT(KC_SPACE)),
+    COMBO(homerow, MEH(KC_R)),
+    COMBO(warp, WARP_ON),
+    COMBO(raycast, LALT(KC_SPACE)),
+    COMBO(launcher, C(G(S(KC_L)))),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
