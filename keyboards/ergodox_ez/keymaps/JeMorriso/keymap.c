@@ -197,5 +197,28 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         default:
             break;
     }
+
+    switch(layer) {
+        case WARP:
+            autoshift_disable();
+            break;
+        default:
+            autoshift_enable();
+            break;
+    }
+
     return state;
-};
+}
+
+bool get_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
+    /* if(IS_RETRO(keycode)) return true; */
+
+    switch (keycode) {
+        case QK_MOD_TAP ... QK_MOD_TAP_MAX:
+            return true;
+        default:
+            return false;
+    }
+
+    /* return false; */
+}
