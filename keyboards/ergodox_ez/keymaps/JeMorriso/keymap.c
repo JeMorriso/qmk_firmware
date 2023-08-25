@@ -32,38 +32,68 @@
 #define TL_3 OSL(ONESHOT)
 
 // right thumb
-#define TR_1 KC_BACKSPACE
-#define TR_2 KC_TAB
+#define TR_1 OSM(MOD_LSFT)
+#define TR_2 KC_BACKSPACE
 #define TR_3 OSL(ONE_DUMB)
 
 // for combos
-#define BASE_A CTL_T(KC_A)
+/* #define BASE_A CTL_T(KC_A) */
+/* #define BASE_B KC_B */
+/* #define BASE_C KC_C */
+/* #define BASE_D CMD_T(KC_D) */
+/* #define BASE_E MEH_T(KC_E) */
+/* #define BASE_F SFT_T(KC_F) */
+/* #define BASE_G KC_G */
+/* #define BASE_H KC_H */
+/* #define BASE_I MEH_T(KC_I) */
+/* #define BASE_J SFT_T(KC_J) */
+/* #define BASE_K CMD_T(KC_K) */
+/* #define BASE_L OPT_T(KC_L) */
+/* #define BASE_M KC_M */
+/* #define BASE_N KC_N */
+/* #define BASE_O HYPR_T(KC_O) */
+/* #define BASE_P KC_P */
+/* #define BASE_Q KC_Q */
+/* #define BASE_R KC_R */
+/* #define BASE_S OPT_T(KC_S) */
+/* #define BASE_T KC_T */
+/* #define BASE_U KC_U */
+/* #define BASE_V KC_V */
+/* #define BASE_W HYPR_T(KC_W) */
+/* #define BASE_X KC_X */
+/* #define BASE_Y KC_Y */
+/* #define BASE_Z KC_Z */
+/* #define BASE_SCLN CTL_T(KC_SCLN) */
+/* #define BASE_COMMA KC_COMMA */
+/* #define BASE_DOT KC_DOT */
+/* #define BASE_SLASH KC_SLASH */
+#define BASE_A KC_A
 #define BASE_B KC_B
 #define BASE_C KC_C
-#define BASE_D CMD_T(KC_D)
-#define BASE_E MEH_T(KC_E)
-#define BASE_F SFT_T(KC_F)
+#define BASE_D KC_D
+#define BASE_E KC_E
+#define BASE_F KC_F
 #define BASE_G KC_G
 #define BASE_H KC_H
-#define BASE_I MEH_T(KC_I)
-#define BASE_J SFT_T(KC_J)
-#define BASE_K CMD_T(KC_K)
-#define BASE_L OPT_T(KC_L)
+#define BASE_I KC_I
+#define BASE_J KC_J
+#define BASE_K KC_K
+#define BASE_L KC_L
 #define BASE_M KC_M
 #define BASE_N KC_N
-#define BASE_O HYPR_T(KC_O)
+#define BASE_O KC_O
 #define BASE_P KC_P
 #define BASE_Q KC_Q
 #define BASE_R KC_R
-#define BASE_S OPT_T(KC_S)
+#define BASE_S KC_S
 #define BASE_T KC_T
 #define BASE_U KC_U
 #define BASE_V KC_V
-#define BASE_W HYPR_T(KC_W)
+#define BASE_W KC_W
 #define BASE_X KC_X
 #define BASE_Y KC_Y
 #define BASE_Z KC_Z
-#define BASE_SCLN CTL_T(KC_SCLN)
+#define BASE_SCLN KC_SCLN
 #define BASE_COMMA KC_COMMA
 #define BASE_DOT KC_DOT
 #define BASE_SLASH KC_SLASH
@@ -75,11 +105,21 @@ enum custom_keycodes {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+  /* [BASE] = LAYOUT_ergodox_pretty( */
+  /*   KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           _______,                                        _______,        KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS, */
+  /*   KC_TAB,         KC_Q,           HYPR_T(KC_W),   MEH_T(KC_E),    KC_R,           KC_T,           KC_LEFT,                                        KC_UP,          KC_Y,           KC_U,           MEH_T(KC_I),    HYPR_T(KC_O),   KC_P,           KC_BACKSPACE, */
+  /*   KC_ESCAPE,      CTL_T(KC_A),    OPT_T(KC_S),    CMD_T(KC_D),    SFT_T(KC_F),    KC_G,                                                                           KC_H,           SFT_T(KC_J),    CMD_T(KC_K),    OPT_T(KC_L),    CTL_T(KC_SCLN), KC_QUOTE, */
+  /*   OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,           KC_V,           OPT_T(KC_B),    KC_RIGHT,                                       KC_DOWN,        KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       OSM(MOD_LSFT), */
+  /*   _______,        KC_LBRC,        KC_RBRC,        WARP_ON,        OSL_OSL,                                                                                                        OSL_OSR,        MEH(KC_R),      KC_EQUAL,       KC_BACKSLASH,   KC_DELETE, */
+  /*                                                                                                   WARP_ON,        _______,        TG(FUN_MED),    MEH(KC_R), */
+  /*                                                                                                                   QK_AREP,        _______, */
+  /*                                                                             LT(FUN_MED,KC_SPACE), KC_ENTER,       QK_REP,         CW_TOGG,        KC_BACKSPACE,   OSM(MOD_LSFT) */
+  /* ), */
   [BASE] = LAYOUT_ergodox_pretty(
     KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           _______,                                        _______,        KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,
-    KC_TAB,         KC_Q,           HYPR_T(KC_W),   MEH_T(KC_E),    KC_R,           KC_T,           KC_LEFT,                                        KC_UP,          KC_Y,           KC_U,           MEH_T(KC_I),    HYPR_T(KC_O),   KC_P,           KC_BACKSPACE,
-    KC_ESCAPE,      CTL_T(KC_A),    OPT_T(KC_S),    CMD_T(KC_D),    SFT_T(KC_F),    KC_G,                                                                           KC_H,           SFT_T(KC_J),    CMD_T(KC_K),    OPT_T(KC_L),    CTL_T(KC_SCLN), KC_QUOTE,
-    OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,           KC_V,           OPT_T(KC_B),    KC_RIGHT,                                       KC_DOWN,        KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       OSM(MOD_LSFT),
+    KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_LEFT,                                        KC_UP,          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BACKSPACE,
+    KC_ESCAPE,      KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCLN,        KC_QUOTE,
+    OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,           KC_RIGHT,                                       KC_DOWN,        KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       OSM(MOD_LSFT),
     _______,        KC_LBRC,        KC_RBRC,        WARP_ON,        OSL_OSL,                                                                                                        OSL_OSR,        MEH(KC_R),      KC_EQUAL,       KC_BACKSLASH,   KC_DELETE,
                                                                                                     WARP_ON,        _______,        TG(FUN_MED),    MEH(KC_R),
                                                                                                                     QK_AREP,        _______,
@@ -256,5 +296,15 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         default:
             break;
     }
+
+    switch (layer) {
+        case WARP:
+            autoshift_disable();
+            break;
+        default:
+            autoshift_enable();
+            break;
+    }
+
     return state;
 };
