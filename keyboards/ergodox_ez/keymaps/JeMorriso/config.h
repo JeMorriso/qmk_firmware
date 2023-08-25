@@ -6,7 +6,6 @@
 #define TAPPING_TERM 200
 
 #define AUTO_SHIFT_TIMEOUT 150
-/* #define NO_AUTO_SHIFT_ALPHA */
-#define AUTO_SHIFT_REPEAT
+#define NO_AUTO_SHIFT_ALPHA
 
 #define COMBO_TERM 30
