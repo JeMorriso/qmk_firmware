@@ -269,7 +269,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return state;
 }
 
-bool get_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
+bool get_custom_auto_shifted_key(uint16_t keycode, keyrecord_t *record) {
     /* if(IS_RETRO(keycode)) return true; */
 
     switch (keycode) {
