@@ -36,6 +36,38 @@
 #define TR_2 KC_TAB
 #define TR_3 OSL(ONE_DUMB)
 
+// for combos
+#define BASE_A CTL_T(KC_A)
+#define BASE_B KC_B
+#define BASE_C KC_C
+#define BASE_D CMD_T(KC_D)
+#define BASE_E MEH_T(KC_E)
+#define BASE_F SFT_T(KC_F)
+#define BASE_G KC_G
+#define BASE_H KC_H
+#define BASE_I MEH_T(KC_I)
+#define BASE_J SFT_T(KC_J)
+#define BASE_K CMD_T(KC_K)
+#define BASE_L OPT_T(KC_L)
+#define BASE_M KC_M
+#define BASE_N KC_N
+#define BASE_O HYPR_T(KC_O)
+#define BASE_P KC_P
+#define BASE_Q KC_Q
+#define BASE_R KC_R
+#define BASE_S OPT_T(KC_S)
+#define BASE_T KC_T
+#define BASE_U KC_U
+#define BASE_V KC_V
+#define BASE_W HYPR_T(KC_W)
+#define BASE_X KC_X
+#define BASE_Y KC_Y
+#define BASE_Z KC_Z
+#define BASE_SCLN CTL_T(KC_SCLN)
+#define BASE_COMMA KC_COMMA
+#define BASE_DOT KC_DOT
+#define BASE_SLASH KC_SLASH
+
 enum custom_keycodes {
     WARP_ON = SAFE_RANGE, // not exactly sure what SAFE_RANGE does but if not included these macros are buggy / broken
     WARP_OFF,
@@ -45,10 +77,10 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergodox_pretty(
     KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           _______,                                        _______,        KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,
-    KC_TAB,         KC_Q,           HYPR_T(KC_W),   MEH_T(KC_E),    KC_R,           KC_T,           KC_UP,                                          KC_LEFT,        KC_Y,           KC_U,           MEH_T(KC_I),    HYPR_T(KC_O),   KC_P,           KC_BACKSPACE,
+    KC_TAB,         KC_Q,           HYPR_T(KC_W),   MEH_T(KC_E),    KC_R,           KC_T,           KC_LEFT,                                        KC_UP,          KC_Y,           KC_U,           MEH_T(KC_I),    HYPR_T(KC_O),   KC_P,           KC_BACKSPACE,
     KC_ESCAPE,      CTL_T(KC_A),    OPT_T(KC_S),    CMD_T(KC_D),    SFT_T(KC_F),    KC_G,                                                                           KC_H,           SFT_T(KC_J),    CMD_T(KC_K),    OPT_T(KC_L),    CTL_T(KC_SCLN), KC_QUOTE,
-    OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,           KC_V,           OPT_T(KC_B),    KC_DOWN,                                        KC_RIGHT,       KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       OSM(MOD_LSFT),
-    _______,        KC_LBRC,        KC_RBRC,        _______,        OSL_OSL,                                                                                                        OSL_OSR,        _______,        KC_EQUAL,       KC_BACKSLASH,   KC_DELETE,
+    OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,           KC_V,           OPT_T(KC_B),    KC_RIGHT,                                       KC_DOWN,        KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       OSM(MOD_LSFT),
+    _______,        KC_LBRC,        KC_RBRC,        WARP_ON,        OSL_OSL,                                                                                                        OSL_OSR,        MEH(KC_R),      KC_EQUAL,       KC_BACKSLASH,   KC_DELETE,
                                                                                                     WARP_ON,        _______,        TG(FUN_MED),    MEH(KC_R),
                                                                                                                     QK_AREP,        _______,
                                                                               LT(FUN_MED,KC_SPACE), KC_ENTER,       QK_REP,         CW_TOGG,        KC_TAB,         KC_BACKSPACE
@@ -58,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,        _______,        KC_W,           KC_E,           _______,        _______,        _______,                                        _______,        _______,        _______,        KC_I,           KC_O,           _______,        _______,
     WARP_OFF,       KC_A,           KC_S,           KC_D,           KC_F,           _______,                                                                        _______,        KC_J,           KC_K,           KC_L,           KC_SCLN,        _______,
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
-    _______,        _______,        _______,        _______,        _______,                                                                                                        _______,        _______,        _______,        _______,        _______,
+    _______,        _______,        _______,        WARP_OFF,       _______,                                                                                                        _______,        _______,        _______,        _______,        _______,
                                                                                                     WARP_OFF,       _______,        _______,        _______,
                                                                                                                     _______,        _______,
                                                                                     _______,        _______,        _______,        _______,        _______,        _______
@@ -67,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        KC_VOLU,
     _______,        KC_F14,         KC_F15,         LCTL(KC_UP),    LGUI(KC_SPACE), LCTL(KC_F5),    _______,                                        _______,        LALT(KC_F6),    KC_MPRV,        KC_MPLY,        KC_MNXT,        KC_MUTE,        KC_VOLD,
     TO(BASE),       KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,
-    _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
+    _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        KC_F12,
     _______,        _______,        _______,        _______,        _______,                                                                                                        _______,        _______,        _______,        _______,        _______,
                                                                                                     _______,        _______,        _______,        _______,
                                                                                                                     _______,        _______,
@@ -95,21 +127,48 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
-const uint16_t PROGMEM enter[]   = {TL_1, TR_1, COMBO_END};
-const uint16_t PROGMEM homerow[] = {TL_1, TR_2, COMBO_END};
-
+// thumbs
+const uint16_t PROGMEM launcher[] = {TL_1, TR_1, COMBO_END};
+const uint16_t PROGMEM raycast[] = {TL_1, TR_2, COMBO_END};
 const uint16_t PROGMEM warp[]     = {TL_2, TR_1, COMBO_END};
-const uint16_t PROGMEM launcher[] = {TL_2, TR_2, COMBO_END};
+const uint16_t PROGMEM homerow[] = {TL_2, TR_2, COMBO_END};
 
-const uint16_t PROGMEM raycast[] = {TL_1, TR_3, COMBO_END};
-
-/* const uint16_t PROGMEM raycast[] = { LT(1,KC_SPACE), OSM(MOD_LCTL), COMBO_END}; */
-/* const uint16_t PROGMEM toggle_1[] = { OSL(ONESHOT), OSM(MOD_LCTL), COMBO_END}; */
-/* COMBO(raycast, LALT(KC_SPACE)), */
-/* COMBO(toggle_1, TG(1)), */
+const uint16_t PROGMEM osm_a[] = {TL_1, BASE_L, COMBO_END};
+const uint16_t PROGMEM osm_ac[] = {TL_1, BASE_P, COMBO_END};
+const uint16_t PROGMEM osm_acm[] = {TL_1, BASE_Y, COMBO_END};
+const uint16_t PROGMEM osm_am[] = {TL_1, BASE_M, COMBO_END};
+const uint16_t PROGMEM osm_ams[] = {TL_1, BASE_N, COMBO_END};
+const uint16_t PROGMEM osm_as[] = {TL_1, BASE_DOT, COMBO_END};
+const uint16_t PROGMEM osm_c[] = {TL_1, BASE_SCLN, COMBO_END};
+const uint16_t PROGMEM osm_cm[] = {TL_1, BASE_U, COMBO_END};
+const uint16_t PROGMEM osm_cms[] = {TL_1, BASE_H, COMBO_END};
+const uint16_t PROGMEM osm_cs[] = {TL_1, BASE_SLASH, COMBO_END};
+const uint16_t PROGMEM osm_hyp[] = {TL_1, BASE_O, COMBO_END};
+const uint16_t PROGMEM osm_m[] = {TL_1, BASE_K, COMBO_END};
+const uint16_t PROGMEM osm_meh[] = {TL_1, BASE_I, COMBO_END};
+const uint16_t PROGMEM osm_ms[] = {TL_1, BASE_COMMA, COMBO_END};
+const uint16_t PROGMEM osm_s[] = {TL_1, BASE_J, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(enter, KC_ENTER), COMBO(homerow, MEH(KC_R)), COMBO(warp, WARP_ON), COMBO(launcher, MEH(KC_A)), COMBO(raycast, LALT(KC_SPACE)),
+    COMBO(homerow, MEH(KC_R)),
+    COMBO(warp, WARP_ON),
+    COMBO(raycast, LALT(KC_SPACE)),
+    COMBO(launcher, C(G(S(KC_L)))),
+    COMBO(osm_a, OSM_A),
+    COMBO(osm_ac, OSM_AC),
+    COMBO(osm_acm, OSM_ACM),
+    COMBO(osm_am, OSM_AM),
+    COMBO(osm_ams, OSM_AMS),
+    COMBO(osm_as, OSM_AS),
+    COMBO(osm_c, OSM_C),
+    COMBO(osm_cm, OSM_CM),
+    COMBO(osm_cms, OSM_CMS),
+    COMBO(osm_cs, OSM_CS),
+    COMBO(osm_hyp, OSM_HYP),
+    COMBO(osm_m, OSM_M),
+    COMBO(osm_meh, OSM_MEH),
+    COMBO(osm_ms, OSM_MS),
+    COMBO(osm_s, OSM_S),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
