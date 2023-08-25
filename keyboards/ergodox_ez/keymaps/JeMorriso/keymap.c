@@ -83,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,        KC_LBRC,        KC_RBRC,        WARP_ON,        OSL_OSL,                                                                                                        OSL_OSR,        MEH(KC_R),      KC_EQUAL,       KC_BACKSLASH,   KC_DELETE,
                                                                                                     WARP_ON,        _______,        TG(FUN_MED),    MEH(KC_R),
                                                                                                                     QK_AREP,        _______,
-                                                                              LT(FUN_MED,KC_SPACE), KC_ENTER,       QK_REP,         CW_TOGG,        KC_BACKSPACE,   OSM(MOD_LSFT)
+                                                                              LT(FUN_MED,KC_SPACE), KC_ENTER,       QK_REP,         CW_TOGG,        KC_TAB,         KC_BACKSPACE
   ),
   [WARP] = LAYOUT_ergodox_pretty(
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
