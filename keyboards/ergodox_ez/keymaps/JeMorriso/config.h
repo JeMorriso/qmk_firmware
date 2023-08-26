@@ -8,4 +8,4 @@
 #define AUTO_SHIFT_TIMEOUT 150
 #define NO_AUTO_SHIFT_ALPHA
 
-#define COMBO_TERM 30
+#define COMBO_TERM 40
