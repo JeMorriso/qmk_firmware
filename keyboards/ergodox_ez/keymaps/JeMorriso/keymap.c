@@ -71,6 +71,14 @@
 enum custom_keycodes {
     WARP_ON = SAFE_RANGE, // not exactly sure what SAFE_RANGE does but if not included these macros are buggy / broken
     WARP_OFF,
+    WARP_HINT,
+    WARP_HINT2,
+    WARP_GRID,
+    WARP_HIST,
+    WARP_SCREEN,
+    WARP_HINT_ONE,
+    WARP_HINT2_ONE,
+    WARP_CLICK,
     OS_FN,
 };
 
@@ -133,6 +141,8 @@ const uint16_t PROGMEM raycast[] = {TL_1, TR_2, COMBO_END};
 const uint16_t PROGMEM warp[]     = {TL_2, TR_1, COMBO_END};
 const uint16_t PROGMEM homerow[] = {TL_2, TR_2, COMBO_END};
 
+const uint16_t PROGMEM warp_click[]     = {TL_3, TR_3, COMBO_END};
+
 const uint16_t PROGMEM osm_a[] = {TL_1, BASE_L, COMBO_END};
 const uint16_t PROGMEM osm_ac[] = {TL_1, BASE_P, COMBO_END};
 const uint16_t PROGMEM osm_acm[] = {TL_1, BASE_Y, COMBO_END};
@@ -149,11 +159,19 @@ const uint16_t PROGMEM osm_meh[] = {TL_1, BASE_I, COMBO_END};
 const uint16_t PROGMEM osm_ms[] = {TL_1, BASE_COMMA, COMBO_END};
 const uint16_t PROGMEM osm_s[] = {TL_1, BASE_J, COMBO_END};
 
+const uint16_t PROGMEM warp_hint[] = {TL_2, BASE_X, COMBO_END};
+const uint16_t PROGMEM warp_grid[] = {TL_2, BASE_G, COMBO_END};
+const uint16_t PROGMEM warp_hist[] = {TL_2, BASE_H, COMBO_END};
+const uint16_t PROGMEM warp_screen[] = {TL_2, BASE_S, COMBO_END};
+const uint16_t PROGMEM warp_hint_one[] = {TL_2, BASE_L, COMBO_END};
+
+const uint16_t PROGMEM warp_hint2[] = {TL_2, TR_1, BASE_X, COMBO_END};
+const uint16_t PROGMEM warp_hint2_one[] = {TL_2, TR_1, BASE_X, COMBO_END};
+
 combo_t key_combos[] = {
     COMBO(homerow, MEH(KC_R)),
-    COMBO(warp, WARP_ON),
     COMBO(raycast, LALT(KC_SPACE)),
-    COMBO(launcher, C(G(S(KC_L)))),
+    COMBO(launcher, MEH(KC_A)),
     COMBO(osm_a, OSM_A),
     COMBO(osm_ac, OSM_AC),
     COMBO(osm_acm, OSM_ACM),
@@ -169,6 +187,15 @@ combo_t key_combos[] = {
     COMBO(osm_meh, OSM_MEH),
     COMBO(osm_ms, OSM_MS),
     COMBO(osm_s, OSM_S),
+    COMBO(warp, WARP_ON),
+    COMBO(warp_click, WARP_CLICK),
+    COMBO(warp_hint, WARP_HINT),
+    COMBO(warp_grid, WARP_GRID),
+    COMBO(warp_hist, WARP_HIST),
+    COMBO(warp_screen, WARP_SCREEN),
+    COMBO(warp_hint_one, WARP_HINT_ONE),
+    COMBO(warp_hint2, WARP_HINT2),
+    COMBO(warp_hint2_one, WARP_HINT2_ONE),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -176,7 +203,62 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case WARP_ON:
             if (record->event.pressed) {
                 layer_on(WARP);
-                SEND_STRING(SS_LCTL(SS_LALT(SS_LSFT("w"))));
+                SEND_STRING(SS_LGUI(SS_LALT("c")));
+            }
+            break;
+
+        case WARP_HINT:
+            if (record->event.pressed) {
+                layer_on(WARP);
+                SEND_STRING(SS_LGUI(SS_LALT("x")));
+            }
+            break;
+
+        case WARP_HINT2:
+            if (record->event.pressed) {
+                layer_on(WARP);
+                SEND_STRING(SS_LGUI(SS_LALT(SS_LSFT("x"))));
+            }
+            break;
+
+        case WARP_GRID:
+            if (record->event.pressed) {
+                layer_on(WARP);
+                SEND_STRING(SS_LGUI(SS_LALT("g")));
+            }
+            break;
+
+        case WARP_HIST:
+            if (record->event.pressed) {
+                layer_on(WARP);
+                SEND_STRING(SS_LGUI(SS_LALT("h")));
+            }
+            break;
+
+        case WARP_SCREEN:
+            if (record->event.pressed) {
+                layer_on(WARP);
+                SEND_STRING(SS_LGUI(SS_LALT("s")));
+            }
+            break;
+
+        case WARP_HINT_ONE:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LGUI(SS_LALT("l")));
+            }
+            break;
+
+        case WARP_HINT2_ONE:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LGUI(SS_LALT(SS_LSFT("l"))));
+            }
+            break;
+
+        case WARP_CLICK:
+            if (record->event.pressed) {
+                SEND_STRING(SS_LGUI(SS_LALT("c")));
+                tap_code(KC_M);
+                tap_code(KC_ESC);
             }
             break;
 
