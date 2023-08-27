@@ -2,10 +2,14 @@
 #include "version.h"
 
 #define BASE 0
-#define WARP 1
-#define FUN_MED 2
-#define ONESHOT 3
-#define ONE_DUMB 4
+#define NAV 1
+#define WARP 2
+#define MEDIA 3
+#define NUM 4
+#define SYM 5
+#define FUN 6
+#define ONESHOT 7
+#define MOUSE 8
 
 #define OSM_A   OSM(MOD_LALT)
 #define OSM_AC  OSM(MOD_LALT|MOD_LCTL)
@@ -29,14 +33,14 @@
 #define WARP_ENTER LT(0, KC_ENTER)
 
 // left thumb
-#define TL_1 LT(FUN_MED,KC_SPACE)
-#define TL_2 WARP_ENTER
-#define TL_3 OSL(ONESHOT)
+#define TL_1 LT(NAV, KC_SPACE)
+#define TL_2 LT(0, KC_ENTER)
+#define TL_3 LT(MEDIA, KC_ESC)
 
 // right thumb
-#define TR_1 KC_BACKSPACE
-#define TR_2 KC_TAB
-#define TR_3 OSL(ONE_DUMB)
+#define TR_1 LT(NUM, KC_BACKSPACE)
+#define TR_2 LT(SYM, KC_TAB)
+#define TR_3 LT(FUN, KC_DELETE)
 
 // for combos
 #define BASE_A CTL_T(KC_A)
@@ -86,56 +90,100 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergodox_pretty(
-    KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           _______,                                        _______,        KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,
-    KC_TAB,         KC_Q,           HYPR_T(KC_W),   MEH_T(KC_E),    KC_R,           KC_T,           KC_LEFT,                                        KC_UP,          KC_Y,           KC_U,           MEH_T(KC_I),    HYPR_T(KC_O),   KC_P,           KC_BACKSPACE,
-    KC_ESCAPE,      CTL_T(KC_A),    OPT_T(KC_S),    CMD_T(KC_D),    SFT_T(KC_F),    KC_G,                                                                           KC_H,           SFT_T(KC_J),    CMD_T(KC_K),    OPT_T(KC_L),    CTL_T(KC_SCLN), KC_QUOTE,
-    OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,           KC_V,           OPT_T(KC_B),    KC_RIGHT,                                       KC_DOWN,        KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       OSM(MOD_LSFT),
-    WARP_ENTER,     KC_LBRC,        KC_RBRC,        WARP_ON,        OSL_OSL,                                                                                                        OSL_OSR,        MEH(KC_R),      KC_EQUAL,       KC_BACKSLASH,   KC_DELETE,
-                                                                                                    WARP_ON,        _______,        TG(FUN_MED),    MEH(KC_R),
-                                                                                                                    QK_AREP,        _______,
-                                                                              LT(FUN_MED,KC_SPACE), WARP_ENTER,     QK_REP,         CW_TOGG,        KC_TAB,         KC_BACKSPACE
+    _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
+    _______,        KC_Q,           HYPR_T(KC_W),   MEH_T(KC_E),    KC_R,           KC_T,           _______,                                        _______,        KC_Y,           KC_U,           MEH_T(KC_I),    HYPR_T(KC_O),   KC_P,           _______,
+    _______,        CTL_T(KC_A),    OPT_T(KC_S),    CMD_T(KC_D),    SFT_T(KC_F),    KC_G,                                                                           KC_H,           SFT_T(KC_J),    CMD_T(KC_K),    OPT_T(KC_L),    CTL_T(KC_SCLN), _______,
+    _______,        KC_Z,           KC_X,           KC_C,           KC_V,           LT(MOUSE,KC_B), _______,                                        _______,        KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       _______,
+    _______,        _______,        _______,        _______,        LT(MEDIA, KC_ESC),                                                                                          LT(FUN, KC_DELETE), _______,        _______,        _______,        _______,
+                                                                                                    _______,        _______,        _______,        _______,
+                                                                                                                    _______,        _______,
+                                                                          LT(NAV, KC_SPACE),       LT(0, KC_ENTER), _______,        _______,        LT(SYM, KC_TAB),  LT(NUM, KC_BACKSPACE)
+  ),
+  [NAV] = LAYOUT_ergodox_pretty(
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, _______,        KC_HYPR,        KC_MEH,         KC_NO,          KC_NO,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          LSFT(KC_INSERT),LCTL(KC_INSERT),LSFT(KC_DELETE),_______,        KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_LCTL,        KC_LALT,        KC_LGUI,        KC_LSFT,        KC_NO,                                                                          KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_CAPS_LOCK,   KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_NO,          KC_RALT,        KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_HOME,        KC_PGDN,        KC_PGUP,        KC_END,         KC_INSERT,      KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,                                                                                                          KC_DELETE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                    KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TAB,         KC_BACKSPACE
   ),
   [WARP] = LAYOUT_ergodox_pretty(
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
     _______,        _______,        KC_W,           KC_E,           _______,        _______,        _______,                                        _______,        _______,        _______,        KC_I,           KC_O,           _______,        _______,
-    WARP_OFF,       KC_A,           KC_S,           KC_D,           KC_F,           _______,                                                                        _______,        KC_J,           KC_K,           KC_L,           KC_SCLN,        _______,
-    _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
-    _______,        _______,        _______,        WARP_OFF,       _______,                                                                                                        _______,        _______,        _______,        _______,        _______,
-                                                                                                    WARP_OFF,       _______,        _______,        _______,
-                                                                                                                    _______,        _______,
-                                                                                    _______,        _______,        _______,        _______,        _______,        _______
-  ),
-  [FUN_MED] = LAYOUT_ergodox_pretty(
-    _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        KC_VOLU,
-    _______,        KC_F14,         KC_F15,         LCTL(KC_UP),    LGUI(KC_SPACE), LCTL(KC_F5),    _______,                                        _______,        LALT(KC_F6),    KC_MPRV,        KC_MPLY,        KC_MNXT,        KC_MUTE,        KC_VOLD,
-    TO(BASE),       KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,
-    _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        KC_F12,
-    _______,        _______,        _______,        _______,        _______,                                                                                                        _______,        _______,        _______,        _______,        _______,
+    _______,        KC_A,           KC_S,           KC_D,           KC_F,           _______,                                                                        KC_H,           KC_J,           KC_K,           KC_L,           _______,        _______,
+    _______,        _______,        _______,        _______,        _______,        KC_B,           _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
+    _______,        _______,        _______,        _______,        WARP_OFF,                                                                                                    LT(FUN, KC_COMMA), _______,        _______,        _______,        _______,
                                                                                                     _______,        _______,        _______,        _______,
                                                                                                                     _______,        _______,
-                                                                                    _______,        _______,        _______,        _______,        _______,        _______
+                                                                                    MO(MOUSE),      _______,        _______,        _______,        LT(SYM, KC_DOT), LT(NUM, KC_M)
+  ),
+  [MEDIA] = LAYOUT_ergodox_pretty(
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, _______,        KC_HYPR,        KC_MEH,         KC_NO,          KC_NO,          KC_TRANSPARENT,                                 KC_TRANSPARENT, _______,        _______,        _______,        _______,        _______,        KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_LCTL,        KC_LALT,        KC_LGUI,        KC_LSFT,        KC_NO,                                                                          KC_NO,          KC_MEDIA_PREV_TRACK,KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_MEDIA_NEXT_TRACK,KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_NO,          KC_RALT,        KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_AUDIO_MUTE,  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                    KC_NO,          KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_MEDIA_STOP,  KC_MEDIA_PLAY_PAUSE
+  ),
+  [NUM] = LAYOUT_ergodox_pretty(
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_LBRC,        KC_7,           KC_8,           KC_9,           KC_RBRC,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_MEH,         KC_HYPR,        _______,        KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_QUOTE,       KC_4,           KC_5,           KC_6,           KC_EQUAL,                                                                       KC_NO,          KC_LSFT,        KC_LGUI,        KC_LALT,        KC_LCTL,        KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_BACKSLASH,   KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_RALT,        KC_NO,          KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_DOT,                                                                                                         KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                    KC_0,           KC_MINUS,       KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT
+  ),
+  [SYM] = LAYOUT_ergodox_pretty(
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_LCBR,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RCBR,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_MEH,         KC_HYPR,        _______,        KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_DQUO,        KC_DLR,         KC_PERC,        KC_CIRC,        KC_PLUS,                                                                        KC_NO,          KC_LSFT,        KC_LGUI,        KC_LALT,        KC_LCTL,       KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TILD,        KC_EXLM,        KC_AT,          KC_HASH,        KC_PIPE,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_RALT,        KC_NO,          KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_LPRN,                                                                                                        KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                    KC_RPRN,        KC_UNDS,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO
+  ),
+  [FUN] = LAYOUT_ergodox_pretty(
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_F12,         KC_F7,          KC_F8,          KC_F9,          _______,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_MEH,         KC_HYPR,        _______,        KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_F11,         KC_F4,          KC_F5,          KC_F6,          _______,                                                                        KC_NO,          KC_LSFT,        KC_LGUI,        KC_LALT,        KC_LCTL,        KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_F10,         KC_F1,          KC_F2,          KC_F3,          KC_PAUSE,       KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_RALT,        KC_NO,          KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_APPLICATION,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                    KC_SPACE,       KC_ENTER,       KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_NO
   ),
   [ONESHOT] = LAYOUT_ergodox_pretty(
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
     _______,        OSM_AC,         OSM_HYP,        OSM_MEH,        OSM_CM,         OSM_ACM,        _______,                                        _______,        OSM_ACM,        OSM_CM,         OSM_MEH,        OSM_HYP,        OSM_AC,         _______,
-    OSL(FUN_MED),   OSM_C,          OSM_A,          OSM_M,          OSM_S,          OSM_CMS,                                                                        OSM_CMS,        OSM_S,          OSM_M,          OSM_A,          OSM_C,          OSL(FUN_MED),
+    _______,        OSM_C,          OSM_A,          OSM_M,          OSM_S,          OSM_CMS,                                                                        OSM_CMS,        OSM_S,          OSM_M,          OSM_A,          OSM_C,          _______,
     _______,        OSM_CS,         OSM_AS,         OSM_MS,         OSM_AM,         OSM_AMS,        _______,                                        _______,        OSM_AMS,        OSM_AM,         OSM_MS,         OSM_AS,         OSM_CS,         _______,
     _______,        _______,        _______,        _______,        _______,                                                                                                        _______,        _______,        _______,        _______,        _______,
                                                                                                     _______,        _______,        _______,        _______,
                                                                                                                     _______,        _______,
                                                                                     _______,        _______,        _______,        _______,        _______,        _______
   ),
-  [ONE_DUMB] = LAYOUT_ergodox_pretty(
-    _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
-    _______,        OSM_AC,         OSM_HYP,        OSM_MEH,        OSM_CM,         OSM_ACM,        _______,                                        _______,        OSM_ACM,        OSM_CM,         OSM_MEH,        OSM_HYP,        OSM_AC,         _______,
-    OSL(FUN_MED),   OSM_C,          OSM_A,          OSM_M,          OSM_S,          OSM_CMS,                                                                        OSM_CMS,        OSM_S,          OSM_M,          OSM_A,          OSM_C,          OSL(FUN_MED),
-    _______,        OSM_CS,         OSM_AS,         OSM_MS,         OSM_AM,         OSM_AMS,        _______,                                        _______,        OSM_AMS,        OSM_AM,         OSM_MS,         OSM_AS,         OSM_CS,         _______,
-    _______,        _______,        _______,        _______,        _______,                                                                                                        _______,        _______,        _______,        _______,        _______,
-                                                                                                    _______,        _______,        _______,        _______,
-                                                                                                                    _______,        _______,
-                                                                                    _______,        _______,        _______,        _______,        _______,        _______
+  [MOUSE] = LAYOUT_ergodox_pretty(
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+    KC_TRANSPARENT, _______,        KC_HYPR,        KC_MEH,         KC_NO,          KC_NO,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          LSFT(KC_INSERT),LCTL(KC_INSERT),LSFT(KC_DELETE),_______,        KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_LCTL,        KC_LALT,        KC_LGUI,        KC_LSFT,        KC_NO,                                                                          KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_UP,       KC_MS_RIGHT,    KC_TRANSPARENT, KC_NO,
+    KC_TRANSPARENT, KC_NO,          KC_RALT,        KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MS_WH_RIGHT, KC_MS_WH_UP,    KC_MS_WH_DOWN,  KC_MS_WH_LEFT,  KC_TRANSPARENT, KC_NO,
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,                                                                                                          KC_MS_BTN3,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
+                                                                                    KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN2,     KC_MS_BTN1
   ),
 };
+
+const uint16_t PROGMEM esc[] = {KC_Q, HYPR_T(KC_W), COMBO_END};
+const uint16_t PROGMEM apostrophe[] = {HYPR_T(KC_O), KC_P, COMBO_END};
+const uint16_t PROGMEM double_quote[] = {SFT_T(KC_F), HYPR_T(KC_O), KC_P, COMBO_END};
 
 // thumbs
 const uint16_t PROGMEM launcher[] = {TL_1, TR_1, COMBO_END};
@@ -144,6 +192,7 @@ const uint16_t PROGMEM warp[]     = {TL_2, TR_1, COMBO_END};
 const uint16_t PROGMEM homerow[] = {TL_2, TR_2, COMBO_END};
 
 const uint16_t PROGMEM warp_click[]     = {TL_3, TR_3, COMBO_END};
+const uint16_t PROGMEM caps_word[]     = {TL_3, TR_1, COMBO_END};
 
 const uint16_t PROGMEM osm_a[] = {TL_1, BASE_L, COMBO_END};
 const uint16_t PROGMEM osm_ac[] = {TL_1, BASE_P, COMBO_END};
@@ -178,9 +227,13 @@ const uint16_t PROGMEM next_window_app[] = {BASE_I, BASE_O, BASE_P, COMBO_END};
 const uint16_t PROGMEM prev_window_app[] = {KC_8, KC_9, KC_0, COMBO_END};
 
 combo_t key_combos[] = {
+    COMBO(esc, KC_ESC),
+    COMBO(apostrophe, KC_QUOTE),
+    COMBO(double_quote, KC_DQUO),
     COMBO(homerow, MEH(KC_R)),
     COMBO(raycast, LALT(KC_SPACE)),
     COMBO(launcher, MEH(KC_A)),
+    COMBO(caps_word, CW_TOGG),
     COMBO(osm_a, OSM_A),
     COMBO(osm_ac, OSM_AC),
     COMBO(osm_acm, OSM_ACM),
@@ -372,3 +425,39 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     }
     return state;
 };
+
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case SFT_T(KC_F):
+        case SFT_T(KC_J):
+        case TR_1:
+        case TR_2:
+        case TL_1:
+        case TL_2:
+            // Immediately select the hold action when another key is tapped.
+            return true;
+        default:
+            // Do not select the hold action when another key is tapped.
+            return false;
+    }
+}
+
+// not working
+/* bool get_combo_must_tap(uint16_t index, combo_t *combo) { */
+/*     // If you want all combos to be tap-only, just uncomment the next line */
+/*     // return true */
+/**/
+/*     // If you want *all* combos, that have Mod-Tap/Layer-Tap/Momentary keys in its chord, to be tap-only, this is for you: */
+/*     uint16_t key; */
+/*     uint8_t idx = 0; */
+/*     while ((key = pgm_read_word(&combo->keys[idx])) != COMBO_END) { */
+/*         switch (key) { */
+/*             case QK_MOD_TAP...QK_MOD_TAP_MAX: */
+/*             case QK_LAYER_TAP...QK_LAYER_TAP_MAX: */
+/*             case QK_MOMENTARY...QK_MOMENTARY_MAX: */
+/*                 return true; */
+/*         } */
+/*         idx += 1; */
+/*     } */
+/*     return false; */
+/* } */
