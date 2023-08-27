@@ -253,26 +253,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 
-    case WARP_OFF:
-        if (record->event.pressed) {
-            layer_off(WARP);
-            tap_code(KC_ESC);
-        }
-        break;
-
-    case OS_FN:
-        if (record->event.pressed) {
-            set_oneshot_layer(FUN_MED, ONESHOT_START);
-            timer = timer_read();
-        }
-        /*     else { */
-        /*     clear_oneshot_layer_state(ONESHOT_PRESSED); */
-        /* } */
-        break;
-  }
-
-  check_disable_oneshot(keycode);
-  return true;
         case WARP_HINT:
             if (record->event.pressed) {
                 layer_on(WARP);
@@ -352,7 +332,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             break;
+
+        case OS_FN:
+            if (record->event.pressed) {
+                set_oneshot_layer(FUN_MED, ONESHOT_START);
+                timer = timer_read();
+            }
+            /*     else { */
+            /*     clear_oneshot_layer_state(ONESHOT_PRESSED); */
+            /* } */
+            break;
     }
+
+    check_disable_oneshot(keycode);
     return true;
 }
 
