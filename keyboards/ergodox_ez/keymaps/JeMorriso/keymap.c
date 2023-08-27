@@ -172,6 +172,11 @@ const uint16_t PROGMEM warp_hint2_one[] = {TL_2, TR_1, BASE_X, COMBO_END};
 
 const uint16_t PROGMEM raycast_windows[] = {BASE_W, TR_2, COMBO_END};
 
+const uint16_t PROGMEM next_window[] = {BASE_U, BASE_I, BASE_O, COMBO_END};
+const uint16_t PROGMEM prev_window[] = {KC_7, KC_8, KC_9, COMBO_END};
+const uint16_t PROGMEM next_window_app[] = {BASE_I, BASE_O, BASE_P, COMBO_END};
+const uint16_t PROGMEM prev_window_app[] = {KC_8, KC_9, KC_0, COMBO_END};
+
 combo_t key_combos[] = {
     COMBO(homerow, MEH(KC_R)),
     COMBO(raycast, LALT(KC_SPACE)),
@@ -201,6 +206,10 @@ combo_t key_combos[] = {
     COMBO(warp_hint2, WARP_HINT2),
     COMBO(warp_hint2_one, WARP_HINT2_ONE),
     COMBO(raycast_windows, C(G(S(KC_W)))),
+    COMBO(next_window, MEH(KC_N)),
+    COMBO(prev_window, MEH(KC_P)),
+    COMBO(next_window_app, HYPR(KC_N)),
+    COMBO(prev_window_app, HYPR(KC_P)),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
