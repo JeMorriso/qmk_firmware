@@ -26,9 +26,11 @@
 #define OSL_OSL   OSL(ONESHOT)
 #define OSL_OSR   OSL(ONE_DUMB)
 
+#define WARP_ENTER LT(0, KC_ENTER)
+
 // left thumb
 #define TL_1 LT(FUN_MED,KC_SPACE)
-#define TL_2 KC_ENTER
+#define TL_2 WARP_ENTER
 #define TL_3 OSL(ONESHOT)
 
 // right thumb
@@ -88,10 +90,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,         KC_Q,           HYPR_T(KC_W),   MEH_T(KC_E),    KC_R,           KC_T,           KC_LEFT,                                        KC_UP,          KC_Y,           KC_U,           MEH_T(KC_I),    HYPR_T(KC_O),   KC_P,           KC_BACKSPACE,
     KC_ESCAPE,      CTL_T(KC_A),    OPT_T(KC_S),    CMD_T(KC_D),    SFT_T(KC_F),    KC_G,                                                                           KC_H,           SFT_T(KC_J),    CMD_T(KC_K),    OPT_T(KC_L),    CTL_T(KC_SCLN), KC_QUOTE,
     OSM(MOD_LSFT),  KC_Z,           KC_X,           KC_C,           KC_V,           OPT_T(KC_B),    KC_RIGHT,                                       KC_DOWN,        KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       OSM(MOD_LSFT),
-    _______,        KC_LBRC,        KC_RBRC,        WARP_ON,        OSL_OSL,                                                                                                        OSL_OSR,        MEH(KC_R),      KC_EQUAL,       KC_BACKSLASH,   KC_DELETE,
+    WARP_ENTER,     KC_LBRC,        KC_RBRC,        WARP_ON,        OSL_OSL,                                                                                                        OSL_OSR,        MEH(KC_R),      KC_EQUAL,       KC_BACKSLASH,   KC_DELETE,
                                                                                                     WARP_ON,        _______,        TG(FUN_MED),    MEH(KC_R),
                                                                                                                     QK_AREP,        _______,
-                                                                              LT(FUN_MED,KC_SPACE), KC_ENTER,       QK_REP,         CW_TOGG,        KC_TAB,         KC_BACKSPACE
+                                                                              LT(FUN_MED,KC_SPACE), WARP_ENTER,     QK_REP,         CW_TOGG,        KC_TAB,         KC_BACKSPACE
   ),
   [WARP] = LAYOUT_ergodox_pretty(
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
@@ -168,6 +170,8 @@ const uint16_t PROGMEM warp_hint_one[] = {TL_2, BASE_L, COMBO_END};
 const uint16_t PROGMEM warp_hint2[] = {TL_2, TR_1, BASE_X, COMBO_END};
 const uint16_t PROGMEM warp_hint2_one[] = {TL_2, TR_1, BASE_X, COMBO_END};
 
+const uint16_t PROGMEM raycast_windows[] = {BASE_W, TR_2, COMBO_END};
+
 combo_t key_combos[] = {
     COMBO(homerow, MEH(KC_R)),
     COMBO(raycast, LALT(KC_SPACE)),
@@ -196,6 +200,7 @@ combo_t key_combos[] = {
     COMBO(warp_hint_one, WARP_HINT_ONE),
     COMBO(warp_hint2, WARP_HINT2),
     COMBO(warp_hint2_one, WARP_HINT2_ONE),
+    COMBO(raycast_windows, C(G(S(KC_W)))),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -266,6 +271,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 layer_off(WARP);
                 tap_code(KC_ESC);
+            }
+            break;
+
+        case WARP_ENTER:
+            if (record->event.pressed) {
+                // key down, is held
+                if (record->tap.count == 0) {
+                    layer_on(WARP);
+                    SEND_STRING(SS_LGUI(SS_LALT("c")));
+                    // stop further processing
+                    return false;
+                }
+            } else {
+                // key up, was held
+                if (record->tap.count == 0) {
+                    layer_off(WARP);
+                    tap_code(KC_ESC);
+                }
             }
             break;
     }
