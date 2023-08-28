@@ -46,30 +46,30 @@
 #define BASE_A CTL_T(KC_A)
 #define BASE_B KC_B
 #define BASE_C KC_C
-#define BASE_D CMD_T(KC_D)
-#define BASE_E MEH_T(KC_E)
-#define BASE_F SFT_T(KC_F)
+#define BASE_D KC_D
+#define BASE_E CMD_T(KC_E)
+#define BASE_F MEH_T(KC_F)
 #define BASE_G KC_G
 #define BASE_H KC_H
-#define BASE_I MEH_T(KC_I)
-#define BASE_J SFT_T(KC_J)
-#define BASE_K CMD_T(KC_K)
-#define BASE_L OPT_T(KC_L)
+#define BASE_I OPT_T(KC_I)
+#define BASE_J KC_J
+#define BASE_K KC_K
+#define BASE_L KC_L
 #define BASE_M KC_M
-#define BASE_N KC_N
-#define BASE_O HYPR_T(KC_O)
+#define BASE_N SFT_T(KC_N)
+#define BASE_O CTL_T(KC_O)
 #define BASE_P KC_P
 #define BASE_Q KC_Q
-#define BASE_R KC_R
-#define BASE_S OPT_T(KC_S)
-#define BASE_T KC_T
-#define BASE_U KC_U
+#define BASE_R OPT_T(KC_R)
+#define BASE_S CMD_T(KC_S)
+#define BASE_T SFT_T(KC_T)
+#define BASE_U MEH_T(KC_U)
 #define BASE_V KC_V
 #define BASE_W HYPR_T(KC_W)
 #define BASE_X KC_X
-#define BASE_Y KC_Y
+#define BASE_Y HYPR_T(KC_Y)
 #define BASE_Z KC_Z
-#define BASE_SCLN CTL_T(KC_SCLN)
+#define BASE_SCLN KC_SCLN
 #define BASE_COMMA KC_COMMA
 #define BASE_DOT KC_DOT
 #define BASE_SLASH KC_SLASH
@@ -91,9 +91,9 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergodox_pretty(
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
-    _______,        KC_Q,           HYPR_T(KC_W),   MEH_T(KC_E),    KC_R,           KC_T,           _______,                                        _______,        KC_Y,           KC_U,           MEH_T(KC_I),    HYPR_T(KC_O),   KC_P,           _______,
-    _______,        CTL_T(KC_A),    OPT_T(KC_S),    CMD_T(KC_D),    SFT_T(KC_F),    KC_G,                                                                           KC_H,           SFT_T(KC_J),    CMD_T(KC_K),    OPT_T(KC_L),    CTL_T(KC_SCLN), _______,
-    _______,        KC_Z,           KC_X,           KC_C,           KC_V,           LT(MOUSE,KC_B), _______,                                        _______,        KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       _______,
+    _______,        KC_Q,           HYPR_T(KC_W),   MEH_T(KC_F),    KC_P,           KC_B,           _______,                                        _______,        KC_J,           KC_L,           MEH_T(KC_U),    HYPR_T(KC_Y),   KC_QUOTE,       _______,
+    _______,        CTL_T(KC_A),    OPT_T(KC_R),    CMD_T(KC_S),    SFT_T(KC_T),    KC_G,                                                                           KC_M,           SFT_T(KC_N),    CMD_T(KC_E),    OPT_T(KC_I),    CTL_T(KC_O),    _______,
+    _______,        KC_Z,           KC_X,           KC_C,           KC_D,           LT(MOUSE,KC_V), _______,                                        _______,        KC_K,           KC_H,           KC_COMMA,       KC_DOT,         KC_SLASH,       _______,
     _______,        _______,        _______,        _______,        LT(MEDIA, KC_ESC),                                                                                          LT(FUN, KC_DELETE), _______,        _______,        _______,        _______,
                                                                                                     _______,        _______,        _______,        _______,
                                                                                                                     _______,        _______,
@@ -111,9 +111,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [WARP] = LAYOUT_ergodox_pretty(
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
-    _______,        _______,        KC_W,           KC_E,           _______,        _______,        _______,                                        _______,        _______,        _______,        KC_I,           KC_O,           _______,        _______,
-    _______,        KC_A,           KC_S,           KC_D,           KC_F,           _______,                                                                        KC_H,           KC_J,           KC_K,           KC_L,           _______,        _______,
-    _______,        _______,        _______,        _______,        _______,        KC_B,           _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
+    _______,        _______,        KC_W,           KC_E,           KC_R,           KC_T,           _______,                                        _______,        KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           _______,
+    _______,        KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCLN,        _______,
+    _______,        _______,        _______,        _______,        KC_V,           KC_B,           _______,                                        _______,        KC_N,           KC_M,           _______,        _______,        _______,        _______,
     _______,        _______,        _______,        _______,        WARP_OFF,                                                                                                    LT(FUN, KC_COMMA), _______,        _______,        _______,        _______,
                                                                                                     _______,        _______,        _______,        _______,
                                                                                                                     _______,        _______,
@@ -132,7 +132,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [NUM] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_LBRC,        KC_7,           KC_8,           KC_9,           KC_RBRC,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_MEH,         KC_HYPR,        _______,        KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_QUOTE,       KC_4,           KC_5,           KC_6,           KC_EQUAL,                                                                       KC_NO,          KC_LSFT,        KC_LGUI,        KC_LALT,        KC_LCTL,        KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_SCLN,        KC_4,           KC_5,           KC_6,           KC_EQUAL,                                                                       KC_NO,          KC_LSFT,        KC_LGUI,        KC_LALT,        KC_LCTL,        KC_TRANSPARENT,
     KC_TRANSPARENT, KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_BACKSLASH,   KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_RALT,        KC_NO,          KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_DOT,                                                                                                         KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -142,7 +142,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [SYM] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
     KC_TRANSPARENT, KC_LCBR,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RCBR,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_MEH,         KC_HYPR,        _______,        KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_DQUO,        KC_DLR,         KC_PERC,        KC_CIRC,        KC_PLUS,                                                                        KC_NO,          KC_LSFT,        KC_LGUI,        KC_LALT,        KC_LCTL,       KC_TRANSPARENT,
+    KC_TRANSPARENT, KC_COLN,        KC_DLR,         KC_PERC,        KC_CIRC,        KC_PLUS,                                                                        KC_NO,          KC_LSFT,        KC_LGUI,        KC_LALT,        KC_LCTL,       KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TILD,        KC_EXLM,        KC_AT,          KC_HASH,        KC_PIPE,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_RALT,        KC_NO,          KC_TRANSPARENT,
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_LPRN,                                                                                                        KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -182,8 +182,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 const uint16_t PROGMEM esc[] = {KC_Q, HYPR_T(KC_W), COMBO_END};
-const uint16_t PROGMEM apostrophe[] = {HYPR_T(KC_O), KC_P, COMBO_END};
-const uint16_t PROGMEM double_quote[] = {SFT_T(KC_F), HYPR_T(KC_O), KC_P, COMBO_END};
+const uint16_t PROGMEM semicolon[] = {HYPR_T(KC_Y), KC_QUOTE, COMBO_END};
+/* const uint16_t PROGMEM colon[] = {SFT_T(KC_F), HYPR_T(KC_O), KC_P, COMBO_END}; */
 
 // thumbs
 const uint16_t PROGMEM launcher[] = {TL_1, TR_1, COMBO_END};
@@ -228,8 +228,9 @@ const uint16_t PROGMEM prev_window_app[] = {KC_8, KC_9, KC_0, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(esc, KC_ESC),
-    COMBO(apostrophe, KC_QUOTE),
-    COMBO(double_quote, KC_DQUO),
+    COMBO(semicolon, KC_SCLN),
+    /* COMBO(apostrophe, KC_QUOTE), */
+    /* COMBO(double_quote, KC_DQUO), */
     COMBO(homerow, MEH(KC_R)),
     COMBO(raycast, LALT(KC_SPACE)),
     COMBO(launcher, MEH(KC_A)),
