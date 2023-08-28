@@ -10,7 +10,7 @@
 
 #define COMBO_TERM 40
 // getting weird behaviour here
-/* #define COMBO_MUST_TAP_PER_COMBO */
+#define COMBO_MUST_TAP_PER_COMBO
 
 #define PERMISSIVE_HOLD_PER_KEY
 

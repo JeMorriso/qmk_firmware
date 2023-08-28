@@ -117,7 +117,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,        _______,        _______,        _______,        WARP_OFF,                                                                                                    LT(FUN, KC_COMMA), _______,        _______,        _______,        _______,
                                                                                                     _______,        _______,        _______,        _______,
                                                                                                                     _______,        _______,
-                                                                                    MO(MOUSE),      _______,        _______,        _______,        LT(SYM, KC_DOT), LT(NUM, KC_M)
+                                                                                    MO(MOUSE),      WARP_OFF,       _______,        _______,        LT(SYM, KC_DOT), LT(NUM, KC_M)
   ),
   [MEDIA] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -442,22 +442,22 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-// not working
-/* bool get_combo_must_tap(uint16_t index, combo_t *combo) { */
-/*     // If you want all combos to be tap-only, just uncomment the next line */
-/*     // return true */
-/**/
-/*     // If you want *all* combos, that have Mod-Tap/Layer-Tap/Momentary keys in its chord, to be tap-only, this is for you: */
-/*     uint16_t key; */
-/*     uint8_t idx = 0; */
-/*     while ((key = pgm_read_word(&combo->keys[idx])) != COMBO_END) { */
-/*         switch (key) { */
-/*             case QK_MOD_TAP...QK_MOD_TAP_MAX: */
-/*             case QK_LAYER_TAP...QK_LAYER_TAP_MAX: */
-/*             case QK_MOMENTARY...QK_MOMENTARY_MAX: */
-/*                 return true; */
-/*         } */
-/*         idx += 1; */
-/*     } */
-/*     return false; */
-/* } */
+bool get_combo_must_tap(uint16_t index, combo_t *combo) {
+    // If you want all combos to be tap-only, just uncomment the next line
+    return true;
+
+    // todo: see if i can get this working
+    // If you want *all* combos, that have Mod-Tap/Layer-Tap/Momentary keys in its chord, to be tap-only, this is for you:
+    /* uint16_t key; */
+    /* uint8_t idx = 0; */
+    /* while ((key = pgm_read_word(&combo->keys[idx])) != COMBO_END) { */
+    /*     switch (key) { */
+    /*         case QK_MOD_TAP...QK_MOD_TAP_MAX: */
+    /*         case QK_LAYER_TAP...QK_LAYER_TAP_MAX: */
+    /*         case QK_MOMENTARY...QK_MOMENTARY_MAX: */
+    /*             return true; */
+    /*     } */
+    /*     idx += 1; */
+    /* } */
+    /* return false; */
+}
