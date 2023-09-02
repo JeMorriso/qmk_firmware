@@ -42,6 +42,13 @@
 #define TR_2 LT(SYM, KC_TAB)
 #define TR_3 LT(FUN, KC_DELETE)
 
+#define COMBO_THUMB_BASE_LEFT LT(NAV, KC_SPACE)
+#define COMBO_THUMB_BASE_RIGHT LT(NUM, KC_BACKSPACE)
+/* #define COMBO_THUMB_NAV LT(NAV, KC_SPACE) */
+/* #define COMBO_THUMB_MEDIA LT(NAV, KC_SPACE) */
+#define COMBO_THUMB_NUM LT(SYM, KC_TAB)
+#define COMBO_THUMB_FUN LT(FUN, KC_DELETE)
+
 // for combos
 #define BASE_A CTL_T(KC_A)
 #define BASE_B KC_B
@@ -73,6 +80,12 @@
 #define BASE_COMMA KC_COMMA
 #define BASE_DOT KC_DOT
 #define BASE_SLASH KC_SLASH
+#define BASE_ENTER LT(0, KC_ENTER)
+#define BASE_SPACE LT(NAV, KC_SPACE)
+#define BASE_ESC LT(MEDIA, KC_ESC)
+#define BASE_TAB LT(SYM, KC_TAB)
+#define BASE_BACKSPACE LT(NUM, KC_BACKSPACE)
+#define BASE_DELETE LT(FUN, KC_DELETE)
 
 enum custom_keycodes {
     WARP_ON = SAFE_RANGE, // not exactly sure what SAFE_RANGE does but if not included these macros are buggy / broken
@@ -111,13 +124,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [WARP] = LAYOUT_ergodox_pretty(
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
-    _______,        _______,        KC_W,           KC_E,           KC_R,           KC_T,           _______,                                        _______,        KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           _______,
-    _______,        KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           KC_SCLN,        _______,
-    _______,        _______,        _______,        _______,        KC_V,           KC_B,           _______,                                        _______,        KC_N,           KC_M,           _______,        _______,        _______,        _______,
-    _______,        _______,        _______,        _______,        WARP_OFF,                                                                                                    LT(FUN, KC_COMMA), _______,        _______,        _______,        _______,
+    _______,        _______,        KC_W,           KC_F,           _______,        _______,        _______,                                        _______,        _______,        _______,        KC_U,           KC_Y,           _______,        _______,
+    _______,        KC_A,           KC_R,           KC_S,           KC_T,           _______,                                                                        _______,        KC_N,           KC_E,           KC_I,           KC_O,           _______,
+    _______,        _______,        _______,        _______,        _______,        KC_V,           _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
+    _______,        _______,        _______,        _______,        WARP_OFF,                                                                                                       _______,        _______,        _______,        _______,        _______,
                                                                                                     _______,        _______,        _______,        _______,
                                                                                                                     _______,        _______,
-                                                                                    MO(MOUSE),      WARP_OFF,       _______,        _______,        LT(SYM, KC_DOT), LT(NUM, KC_M)
+                                                                                    MO(MOUSE),      WARP_OFF,       _______,        _______,        KC_SPACE,       _______
   ),
   [MEDIA] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
