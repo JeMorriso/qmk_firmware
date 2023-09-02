@@ -30,23 +30,23 @@
 #define OSL_OSL   OSL(ONESHOT)
 #define OSL_OSR   OSL(ONE_DUMB)
 
-#define WARP_ENTER LT(0, KC_ENTER)
+#define WARP_TAB LT(0, KC_TAB)
 
 // left thumb
 #define TL_1 LT(NAV, KC_SPACE)
-#define TL_2 LT(0, KC_ENTER)
+#define TL_2 LT(0, KC_TAB)
 #define TL_3 LT(MEDIA, KC_ESC)
 
 // right thumb
 #define TR_1 LT(NUM, KC_BACKSPACE)
-#define TR_2 LT(SYM, KC_TAB)
+#define TR_2 LT(SYM, KC_ENTER)
 #define TR_3 LT(FUN, KC_DELETE)
 
 #define COMBO_THUMB_BASE_LEFT LT(NAV, KC_SPACE)
 #define COMBO_THUMB_BASE_RIGHT LT(NUM, KC_BACKSPACE)
 /* #define COMBO_THUMB_NAV LT(NAV, KC_SPACE) */
 /* #define COMBO_THUMB_MEDIA LT(NAV, KC_SPACE) */
-#define COMBO_THUMB_NUM LT(SYM, KC_TAB)
+#define COMBO_THUMB_NUM LT(SYM, KC_ENTER)
 #define COMBO_THUMB_FUN LT(FUN, KC_DELETE)
 
 // for combos
@@ -80,10 +80,10 @@
 #define BASE_COMMA KC_COMMA
 #define BASE_DOT KC_DOT
 #define BASE_SLASH KC_SLASH
-#define BASE_ENTER LT(0, KC_ENTER)
+#define BASE_ENTER LT(SYM, KC_ENTER)
 #define BASE_SPACE LT(NAV, KC_SPACE)
 #define BASE_ESC LT(MEDIA, KC_ESC)
-#define BASE_TAB LT(SYM, KC_TAB)
+#define BASE_TAB LT(0, KC_TAB)
 #define BASE_BACKSPACE LT(NUM, KC_BACKSPACE)
 #define BASE_DELETE LT(FUN, KC_DELETE)
 
@@ -110,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,        _______,        _______,        _______,        LT(MEDIA, KC_ESC),                                                                                          LT(FUN, KC_DELETE), _______,        _______,        _______,        _______,
                                                                                                     _______,        _______,        _______,        _______,
                                                                                                                     _______,        _______,
-                                                                          LT(NAV, KC_SPACE),       LT(0, KC_ENTER), _______,        _______,        LT(SYM, KC_TAB),  LT(NUM, KC_BACKSPACE)
+                                                                                 LT(NAV, KC_SPACE), LT(0, KC_TAB),  _______,        _______,        LT(SYM, KC_ENTER), LT(NUM, KC_BACKSPACE)
   ),
   [NAV] = LAYOUT_ergodox_pretty(
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
@@ -120,7 +120,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,                                                                                                          KC_DELETE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                    KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TAB,         KC_BACKSPACE
+                                                                                    KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_ENTER,       KC_BACKSPACE
   ),
   [WARP] = LAYOUT_ergodox_pretty(
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
@@ -170,7 +170,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_APPLICATION,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                                     KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                    KC_SPACE,       KC_ENTER,       KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_NO
+                                                                                    KC_SPACE,       KC_TAB,         KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_NO
   ),
   [ONESHOT] = LAYOUT_ergodox_pretty(
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
@@ -350,7 +350,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 
-        case WARP_ENTER:
+        case WARP_TAB:
             if (record->event.pressed) {
                 // key down, is held
                 if (record->tap.count == 0) {
