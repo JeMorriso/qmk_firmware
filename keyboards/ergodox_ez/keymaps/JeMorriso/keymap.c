@@ -76,7 +76,7 @@
 #define BASE_X KC_X
 #define BASE_Y HYPR_T(KC_Y)
 #define BASE_Z KC_Z
-#define BASE_SCLN KC_SCLN
+#define BASE_QUOTE KC_QUOTE
 #define BASE_COMMA KC_COMMA
 #define BASE_DOT KC_DOT
 #define BASE_SLASH KC_SLASH
@@ -98,7 +98,7 @@ enum custom_keycodes {
     WARP_HINT_ONE,
     WARP_HINT2_ONE,
     WARP_CLICK,
-    OS_FN,
+    OS_FN
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -207,21 +207,21 @@ const uint16_t PROGMEM homerow[] = {TL_2, TR_2, COMBO_END};
 const uint16_t PROGMEM warp_click[]     = {TL_3, TR_3, COMBO_END};
 const uint16_t PROGMEM caps_word[]     = {TL_3, TR_1, COMBO_END};
 
-const uint16_t PROGMEM osm_a[] = {TL_1, BASE_L, COMBO_END};
-const uint16_t PROGMEM osm_ac[] = {TL_1, BASE_P, COMBO_END};
-const uint16_t PROGMEM osm_acm[] = {TL_1, BASE_Y, COMBO_END};
-const uint16_t PROGMEM osm_am[] = {TL_1, BASE_M, COMBO_END};
-const uint16_t PROGMEM osm_ams[] = {TL_1, BASE_N, COMBO_END};
-const uint16_t PROGMEM osm_as[] = {TL_1, BASE_DOT, COMBO_END};
-const uint16_t PROGMEM osm_c[] = {TL_1, BASE_SCLN, COMBO_END};
-const uint16_t PROGMEM osm_cm[] = {TL_1, BASE_U, COMBO_END};
-const uint16_t PROGMEM osm_cms[] = {TL_1, BASE_H, COMBO_END};
-const uint16_t PROGMEM osm_cs[] = {TL_1, BASE_SLASH, COMBO_END};
-const uint16_t PROGMEM osm_hyp[] = {TL_1, BASE_O, COMBO_END};
-const uint16_t PROGMEM osm_m[] = {TL_1, BASE_K, COMBO_END};
-const uint16_t PROGMEM osm_meh[] = {TL_1, BASE_I, COMBO_END};
-const uint16_t PROGMEM osm_ms[] = {TL_1, BASE_COMMA, COMBO_END};
-const uint16_t PROGMEM osm_s[] = {TL_1, BASE_J, COMBO_END};
+/* const uint16_t PROGMEM osm_a[] = {TL_1, BASE_L, COMBO_END}; */
+/* const uint16_t PROGMEM osm_ac[] = {TL_1, BASE_P, COMBO_END}; */
+/* const uint16_t PROGMEM osm_acm[] = {TL_1, BASE_Y, COMBO_END}; */
+/* const uint16_t PROGMEM osm_am[] = {TL_1, BASE_M, COMBO_END}; */
+/* const uint16_t PROGMEM osm_ams[] = {TL_1, BASE_N, COMBO_END}; */
+/* const uint16_t PROGMEM osm_as[] = {TL_1, BASE_DOT, COMBO_END}; */
+/* const uint16_t PROGMEM osm_c[] = {TL_1, BASE_SCLN, COMBO_END}; */
+/* const uint16_t PROGMEM osm_cm[] = {TL_1, BASE_U, COMBO_END}; */
+/* const uint16_t PROGMEM osm_cms[] = {TL_1, BASE_H, COMBO_END}; */
+/* const uint16_t PROGMEM osm_cs[] = {TL_1, BASE_SLASH, COMBO_END}; */
+/* const uint16_t PROGMEM osm_hyp[] = {TL_1, BASE_O, COMBO_END}; */
+/* const uint16_t PROGMEM osm_m[] = {TL_1, BASE_K, COMBO_END}; */
+/* const uint16_t PROGMEM osm_meh[] = {TL_1, BASE_I, COMBO_END}; */
+/* const uint16_t PROGMEM osm_ms[] = {TL_1, BASE_COMMA, COMBO_END}; */
+/* const uint16_t PROGMEM osm_s[] = {TL_1, BASE_J, COMBO_END}; */
 
 const uint16_t PROGMEM warp_hint[] = {TL_2, BASE_X, COMBO_END};
 const uint16_t PROGMEM warp_grid[] = {TL_2, BASE_G, COMBO_END};
@@ -248,21 +248,21 @@ combo_t key_combos[] = {
     COMBO(raycast, LALT(KC_SPACE)),
     COMBO(launcher, MEH(KC_A)),
     COMBO(caps_word, CW_TOGG),
-    COMBO(osm_a, OSM_A),
-    COMBO(osm_ac, OSM_AC),
-    COMBO(osm_acm, OSM_ACM),
-    COMBO(osm_am, OSM_AM),
-    COMBO(osm_ams, OSM_AMS),
-    COMBO(osm_as, OSM_AS),
-    COMBO(osm_c, OSM_C),
-    COMBO(osm_cm, OSM_CM),
-    COMBO(osm_cms, OSM_CMS),
-    COMBO(osm_cs, OSM_CS),
-    COMBO(osm_hyp, OSM_HYP),
-    COMBO(osm_m, OSM_M),
-    COMBO(osm_meh, OSM_MEH),
-    COMBO(osm_ms, OSM_MS),
-    COMBO(osm_s, OSM_S),
+    /* COMBO(osm_a, OSM_A), */
+    /* COMBO(osm_ac, OSM_AC), */
+    /* COMBO(osm_acm, OSM_ACM), */
+    /* COMBO(osm_am, OSM_AM), */
+    /* COMBO(osm_ams, OSM_AMS), */
+    /* COMBO(osm_as, OSM_AS), */
+    /* COMBO(osm_c, OSM_C), */
+    /* COMBO(osm_cm, OSM_CM), */
+    /* COMBO(osm_cms, OSM_CMS), */
+    /* COMBO(osm_cs, OSM_CS), */
+    /* COMBO(osm_hyp, OSM_HYP), */
+    /* COMBO(osm_m, OSM_M), */
+    /* COMBO(osm_meh, OSM_MEH), */
+    /* COMBO(osm_ms, OSM_MS), */
+    /* COMBO(osm_s, OSM_S), */
     COMBO(warp, WARP_ON),
     COMBO(warp_click, WARP_CLICK),
     COMBO(warp_hint, WARP_HINT),
@@ -475,3 +475,4 @@ bool get_combo_must_tap(uint16_t index, combo_t *combo) {
     /* } */
     /* return false; */
 }
+
