@@ -107,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
     _______,        KC_Q,           HYPR_T(KC_W),   MEH_T(KC_F),    KC_P,           KC_B,           _______,                                        _______,        KC_J,           KC_L,           MEH_T(KC_U),    HYPR_T(KC_Y),   KC_SCLN,        _______,
     _______,        CTL_T(KC_A),    OPT_T(KC_R),    CMD_T(KC_S),    SFT_T(KC_T),    KC_G,                                                                           KC_M,           SFT_T(KC_N),    CMD_T(KC_E),    OPT_T(KC_I),    CTL_T(KC_O),    KC_QUOTE,
-    _______,        KC_Z,           KC_X,           KC_C,           RCMD_T(KC_D),   LT(MOUSE,KC_V), _______,                                        _______,        KC_K,           RCMD_T(KC_H),   KC_COMMA,       KC_DOT,         KC_SLASH,       _______,
+    KC_RCMD,        KC_Z,           KC_X,           KC_C,           RCMD_T(KC_D),   LT(MOUSE,KC_V), _______,                                        _______,        KC_K,           RCMD_T(KC_H),   KC_COMMA,       KC_DOT,         KC_SLASH,       KC_RCMD,
     _______,        _______,        _______,        _______,        LT(MEDIA, KC_ESC),                                                                                          LT(FUN, KC_DELETE), _______,        _______,        _______,        _______,
                                                                                                     _______,        _______,        _______,        _______,
                                                                                                                     _______,        _______,
@@ -247,7 +247,7 @@ combo_t key_combos[] = {
     /* COMBO(double_quote, KC_DQUO), */
     COMBO(homerow, MEH(KC_R)),
     COMBO(raycast, LALT(KC_SPACE)),
-    COMBO(launcher, MEH(KC_A)),
+    COMBO(launcher, KC_RCMD),
     COMBO(caps_word, CW_TOGG),
     /* COMBO(osm_a, OSM_A), */
     /* COMBO(osm_ac, OSM_AC), */
@@ -462,9 +462,9 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     }
 }
 
-bool get_combo_must_tap(uint16_t index, combo_t *combo) {
+/* bool get_combo_must_tap(uint16_t index, combo_t *combo) { */
     // If you want all combos to be tap-only, just uncomment the next line
-    return true;
+    /* return true; */
 
     // todo: see if i can get this working
     // If you want *all* combos, that have Mod-Tap/Layer-Tap/Momentary keys in its chord, to be tap-only, this is for you:
@@ -480,7 +480,7 @@ bool get_combo_must_tap(uint16_t index, combo_t *combo) {
     /*     idx += 1; */
     /* } */
     /* return false; */
-}
+/* } */
 
 extern rgb_config_t rgb_matrix_config;
 
