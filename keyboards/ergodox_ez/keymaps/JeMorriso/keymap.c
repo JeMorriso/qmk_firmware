@@ -9,7 +9,6 @@
 #define SYM 5
 #define FUN 6
 /* #define ONESHOT 7 */
-/* #define MOUSE 7 */
 
 #define XXX KC_NO
 #define ___ KC_TRNS
@@ -185,16 +184,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /*                                                                                                   ___,            ___,            ___,            ___,     */
   /*                                                                                                                   ___,            ___,     */
   /*                                                                                   ___,            ___,            ___,            ___,            ___,            _______ */
-  /* ), */
-  /* [MOUSE] = LAYOUT_ergodox_pretty( */
-  /*   ___,            ___,            ___,            ___,            ___,            ___,            ___,                                            ___,            ___,            ___,            ___,            ___,            ___,            ___,            */
-  /*   ___,            ___,            KC_HYPR,        KC_MEH,         XXX,            XXX,            ___,                                            ___,            XXX,            LSFT(KC_INSERT),LCTL(KC_INSERT),LSFT(KC_DELETE),___,            ___,            */
-  /*   ___,            KC_LCTL,        KC_LALT,        KC_LGUI,        KC_LSFT,        XXX,                                                                            KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_UP,       KC_MS_RIGHT,    ___,            XXX,   */
-  /*   ___,            XXX,            KC_RALT,        XXX,            XXX,            XXX,            ___,                                            ___,            KC_MS_WH_RIGHT, KC_MS_WH_UP,    KC_MS_WH_DOWN,  KC_MS_WH_LEFT,  ___,            XXX,   */
-  /*   ___,            ___,            ___,            ___,            XXX,                                                                                                            KC_MS_BTN3,     ___,            ___,            ___,            ___,            */
-  /*                                                                                                   ___,            ___,            ___,            ___,            */
-  /*                                                                                                                   ___,            ___,            */
-  /*                                                                                   XXX,            ___,            ___,            ___,            KC_MS_BTN2,     KC_MS_BTN1 */
   /* ), */
 };
 
