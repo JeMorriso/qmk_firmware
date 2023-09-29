@@ -369,6 +369,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        // TODO update for colemak?
+        /* case SFT_T(KC_F): */
+        /* case SFT_T(KC_J): */
+        case TR_1:
+        case TR_2:
+        case TL_1:
+        case TL_2:
+            // Immediately select the hold action when another key is tapped.
+            return true;
+        default:
+            // Do not select the hold action when another key is tapped.
+            return false;
+    }
+}
+
 static const uint8_t max_led_value = 20;
 
 void led_1_on(void) {
@@ -438,21 +455,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return state;
 };
 
-bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case SFT_T(KC_F):
-        case SFT_T(KC_J):
-        case TR_1:
-        case TR_2:
-        case TL_1:
-        case TL_2:
-            // Immediately select the hold action when another key is tapped.
-            return true;
-        default:
-            // Do not select the hold action when another key is tapped.
-            return false;
-    }
-}
+
 
 /* bool get_combo_must_tap(uint16_t index, combo_t *combo) { */
     // If you want all combos to be tap-only, just uncomment the next line
