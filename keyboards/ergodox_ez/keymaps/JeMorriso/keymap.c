@@ -9,7 +9,10 @@
 #define SYM 5
 #define FUN 6
 /* #define ONESHOT 7 */
-#define MOUSE 7
+/* #define MOUSE 7 */
+
+#define XXX KC_NO
+#define ___ KC_TRNS
 
 #define OSM_A   OSM(MOD_LALT)
 #define OSM_AC  OSM(MOD_LALT|MOD_LCTL)
@@ -42,22 +45,22 @@
 #define TR_2 LT(SYM, KC_ENTER)
 #define TR_3 LT(FUN, KC_DELETE)
 
-#define COMBO_THUMB_BASE_LEFT LT(NAV, KC_SPACE)
-#define COMBO_THUMB_BASE_RIGHT LT(NUM, KC_BACKSPACE)
+/* #define COMBO_THUMB_BASE_LEFT LT(NAV, KC_SPACE) */
+/* #define COMBO_THUMB_BASE_RIGHT LT(NUM, KC_BACKSPACE) */
 /* #define COMBO_THUMB_NAV LT(NAV, KC_SPACE) */
 /* #define COMBO_THUMB_MEDIA LT(NAV, KC_SPACE) */
-#define COMBO_THUMB_NUM LT(SYM, KC_ENTER)
-#define COMBO_THUMB_FUN LT(FUN, KC_DELETE)
+/* #define COMBO_THUMB_NUM LT(SYM, KC_ENTER) */
+/* #define COMBO_THUMB_FUN LT(FUN, KC_DELETE) */
 
 // for combos
 #define BASE_A CTL_T(KC_A)
 #define BASE_B KC_B
 #define BASE_C KC_C
-#define BASE_D RCMD_T(KC_D)
+#define BASE_D KC_D
 #define BASE_E CMD_T(KC_E)
 #define BASE_F MEH_T(KC_F)
 #define BASE_G KC_G
-#define BASE_H RCMD_T(KC_H)
+#define BASE_H KC_H
 #define BASE_I OPT_T(KC_I)
 #define BASE_J KC_J
 #define BASE_K KC_K
@@ -104,95 +107,95 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergodox_pretty(
-    _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
-    _______,        KC_Q,           HYPR_T(KC_W),   MEH_T(KC_F),    KC_P,           KC_B,           _______,                                        _______,        KC_J,           KC_L,           MEH_T(KC_U),    HYPR_T(KC_Y),   KC_SCLN,        _______,
-    _______,        CTL_T(KC_A),    OPT_T(KC_R),    CMD_T(KC_S),    SFT_T(KC_T),    KC_G,                                                                           KC_M,           SFT_T(KC_N),    CMD_T(KC_E),    OPT_T(KC_I),    CTL_T(KC_O),    KC_QUOTE,
-    KC_RCMD,        KC_Z,           KC_X,           KC_C,           RCMD_T(KC_D),   LT(MOUSE,KC_V), _______,                                        _______,        KC_K,           RCMD_T(KC_H),   KC_COMMA,       KC_DOT,         KC_SLASH,       KC_RCMD,
-    _______,        _______,        _______,        _______,        LT(MEDIA, KC_ESC),                                                                                          LT(FUN, KC_DELETE), _______,        _______,        _______,        _______,
-                                                                                                    _______,        _______,        _______,        _______,
-                                                                                                                    _______,        _______,
-                                                                                 LT(NAV, KC_SPACE), LT(0, KC_TAB),  _______,        _______,        LT(SYM, KC_ENTER), LT(NUM, KC_BACKSPACE)
+    ___,            KC_Q,           HYPR_T(KC_W),   MEH_T(KC_F),    KC_P,           KC_B,           ___,                                            ___,            KC_J,           KC_L,           MEH_T(KC_U),    HYPR_T(KC_Y),   KC_SCLN,        ___,
+    ___,            CTL_T(KC_A),    OPT_T(KC_R),    CMD_T(KC_S),    SFT_T(KC_T),    KC_G,           ___,                                            ___,            KC_M,           SFT_T(KC_N),    CMD_T(KC_E),    OPT_T(KC_I),    CTL_T(KC_O),    ___,
+    ___,            KC_Z,           KC_X,           KC_C,           KC_D,           KC_V,                                                                           KC_K,           KC_H,           KC_COMMA,       KC_DOT,         KC_SLASH,       ___,
+    ___,            ___,            ___,            ___,     LT(MEDIA, KC_ESC), LT(NAV, KC_SPACE), LT(0, KC_TAB),                       LT(SYM, KC_ENTER), LT(NUM, KC_BACKSPACE), LT(FUN, KC_DELETE), ___,          ___,            ___,            ___,
+    ___,            ___,            ___,            ___,            ___,                                                                                                            ___,            ___,            ___,            ___,            ___,
+                                                                                                    ___,            ___,            ___,            ___,
+                                                                                                                    ___,            ___,
+                                                                                    ___,            ___,            ___,            ___,            ___,            ___
   ),
   [NAV] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, _______,        KC_HYPR,        KC_MEH,         KC_NO,          KC_NO,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          LSFT(KC_INSERT),LCTL(KC_INSERT),LSFT(KC_DELETE),_______,        KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_LCTL,        KC_LALT,        KC_LGUI,        KC_LSFT,        KC_NO,                                                                          KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_CAPS_LOCK,   KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_NO,          KC_RALT,        KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_HOME,        KC_PGDN,        KC_PGUP,        KC_END,         KC_INSERT,      KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,                                                                                                          KC_DELETE,      KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                    KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_ENTER,       KC_BACKSPACE
+    ___,            XXX,            KC_HYPR,        KC_MEH,         XXX,            XXX,            ___,                                            ___,            XXX,            LSFT(KC_INSERT),LCTL(KC_INSERT),LSFT(KC_DELETE),XXX,            ___,
+    ___,            KC_LCTL,        KC_LALT,        KC_LGUI,        KC_LSFT,        XXX,            ___,                                            ___,            KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_CAPS_LOCK,   ___,
+    ___,            XXX,            XXX,            XXX,            XXX,            XXX,                                                                            KC_HOME,        KC_PGDN,        KC_PGUP,        KC_END,         KC_INSERT,      ___,
+    ___,            ___,            ___,            ___,            XXX,            XXX,            XXX,                                            XXX,            XXX,            XXX,            ___,            ___,            ___,            ___,
+    ___,            ___,            ___,            ___,            ___,                                                                                                            ___,            ___,            ___,            ___,            ___,
+                                                                                                    ___,            ___,            ___,            ___,
+                                                                                                                    ___,            ___,
+                                                                                    ___,            ___,            ___,            ___,            ___,            ___
   ),
   [WARP] = LAYOUT_ergodox_pretty(
-    _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______,
-    _______,        _______,        KC_W,           KC_F,           _______,        _______,        _______,                                        _______,        _______,        _______,        KC_U,           KC_Y,           _______,        _______,
-    _______,        KC_A,           KC_R,           KC_S,           KC_T,           _______,                                                                        _______,        KC_N,           KC_E,           KC_I,           KC_O,           _______,
-    _______,        _______,        _______,        _______,        KC_D,           KC_V,           _______,                                        _______,        _______,        KC_H,           _______,        _______,        _______,        _______,
-    _______,        _______,        _______,        _______,        WARP_OFF,                                                                                                       _______,        _______,        _______,        _______,        _______,
-                                                                                                    _______,        _______,        _______,        _______,
-                                                                                                                    _______,        _______,
-                                                                                    MO(MOUSE),      WARP_OFF,       _______,        _______,        KC_SPACE,       _______
+    ___,            ___,            ___,            ___,            ___,            ___,            ___,                                            ___,            ___,            ___,            ___,            ___,            ___,            ___,
+    ___,            ___,            ___,            ___,            ___,            ___,            ___,                                            ___,            ___,            KC_N,           KC_E,           KC_I,           ___,            ___,
+    ___,            ___,            ___,            ___,            ___,            ___,                                                                            ___,            ___,            ___,            ___,            ___,            ___,
+    ___,            ___,            ___,            ___,            WARP_OFF,       KC_SPACE,       ___,                                            KC_KP_ENTER,    KC_BACKSPACE,   KC_DELETE,      ___,            ___,            ___,            ___,
+    ___,            ___,            ___,            ___,            ___,                                                                                                            ___,            ___,            ___,            ___,            ___,
+                                                                                                    ___,            ___,            ___,            ___,
+                                                                                                                    ___,            ___,
+                                                                                    ___,            ___,            ___,            ___,            ___,            ___
   ),
   [MEDIA] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, _______,        KC_HYPR,        KC_MEH,         KC_NO,          KC_NO,          KC_TRANSPARENT,                                 KC_TRANSPARENT, _______,        _______,        _______,        _______,        _______,        KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_LCTL,        KC_LALT,        KC_LGUI,        KC_LSFT,        KC_NO,                                                                          KC_MPRV,        KC_VOLD,        KC_VOLU,        KC_MNXT,        KC_TRANSPARENT, _______,
-    KC_TRANSPARENT, KC_NO,          KC_RALT,        KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_AUDIO_MUTE,  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                    KC_NO,          KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_MEDIA_STOP,  KC_MEDIA_PLAY_PAUSE
+    ___,            XXX,            KC_HYPR,        KC_MEH,         XXX,            XXX,            ___,                                            ___,            XXX,            XXX,            XXX,            XXX,            XXX,            ___,
+    ___,            KC_LCTL,        KC_LALT,        KC_LGUI,        KC_LSFT,        XXX,            ___,                                            ___,            KC_MPRV,        KC_VOLD,        KC_VOLU,        KC_MNXT,        XXX,            ___,
+    ___,            XXX,            XXX,            XXX,            XXX,            XXX,                                                                            XXX,            XXX,            XXX,            XXX,            XXX,            ___,
+    ___,            ___,            ___,            ___,            XXX,            XXX,            XXX,                                         KC_MEDIA_STOP, KC_MEDIA_PLAY_PAUSE, KC_AUDIO_MUTE, ___,            ___,            ___,            ___,
+    ___,            ___,            ___,            ___,            ___,                                                                                                            ___,            ___,            ___,            ___,            ___,
+                                                                                                    ___,            ___,            ___,            ___,
+                                                                                                                    ___,            ___,
+                                                                                    ___,            ___,            ___,            ___,            ___,            ___
   ),
   [NUM] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_LBRC,        KC_7,           KC_8,           KC_9,           KC_RBRC,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_MEH,         KC_HYPR,        _______,        KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_QUOTE,       KC_4,           KC_5,           KC_6,           KC_EQUAL,                                                                       KC_NO,          KC_LSFT,        KC_LGUI,        KC_LALT,        KC_LCTL,        KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_BACKSLASH,   KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_RALT,        KC_NO,          KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_DOT,                                                                                                         KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                    KC_0,           KC_MINUS,       KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT
+    ___,            KC_LBRC,        KC_7,           KC_8,           KC_9,           KC_RBRC,        ___,                                            ___,            XXX,            XXX,            KC_MEH,         KC_HYPR,        XXX,            ___,
+    ___,            KC_QUOTE,       KC_4,           KC_5,           KC_6,           KC_EQUAL,       ___,                                            ___,            XXX,            KC_LSFT,        KC_LGUI,        KC_LALT,        KC_LCTL,        ___,
+    ___,            KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_BACKSLASH,                                                                   XXX,            XXX,            XXX,            XXX,            XXX,            ___,
+    ___,            ___,            ___,            ___,            KC_DOT,         KC_0,           KC_MINUS,                                       XXX,            XXX,            XXX,            ___,            ___,            ___,            ___,
+    ___,            ___,            ___,            ___,            ___,                                                                                                            ___,            ___,            ___,            ___,            ___,
+                                                                                                    ___,            ___,            ___,            ___,
+                                                                                                                    ___,            ___,
+                                                                                    ___,            ___,            ___,            ___,            ___,            ___
   ),
   [SYM] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_LCBR,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RCBR,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_MEH,         KC_HYPR,        _______,        KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_DQUO,        KC_DLR,         KC_PERC,        KC_CIRC,        KC_PLUS,                                                                        KC_NO,          KC_LSFT,        KC_LGUI,        KC_LALT,        KC_LCTL,       KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TILD,        KC_EXLM,        KC_AT,          KC_HASH,        KC_PIPE,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_RALT,        KC_NO,          KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_LPRN,                                                                                                        KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                    KC_RPRN,        KC_UNDS,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO
+    ___,            KC_LCBR,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RCBR,        ___,                                            ___,            XXX,            XXX,            KC_MEH,         KC_HYPR,        XXX,            ___,
+    ___,            KC_DQUO,        KC_DLR,         KC_PERC,        KC_CIRC,        KC_PLUS,        ___,                                            ___,            XXX,            KC_LSFT,        KC_LGUI,        KC_LALT,        KC_LCTL,        ___,
+    ___,            KC_TILD,        KC_EXLM,        KC_AT,          KC_HASH,        KC_PIPE,                                                                        XXX,            XXX,            XXX,            XXX,            XXX,           ___,
+    ___,            ___,            ___,            ___,            KC_LPRN,        KC_RPRN,        KC_UNDS,                                        XXX,            XXX,            XXX,            ___,            ___,            ___,            ___,
+    ___,            ___,            ___,            ___,            ___,                                                                                                            ___,            ___,            ___,            ___,            ___,
+                                                                                                    ___,            ___,            ___,            ___,
+                                                                                                                    ___,            ___,
+                                                                                    ___,            ___,            ___,            ___,            ___,            ___
   ),
   [FUN] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_F12,         KC_F7,          KC_F8,          KC_F9,          _______,        KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_MEH,         KC_HYPR,        _______,        KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_F11,         KC_F4,          KC_F5,          KC_F6,          _______,                                                                        KC_NO,          KC_LSFT,        KC_LGUI,        KC_LALT,        KC_LCTL,        KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_F10,         KC_F1,          KC_F2,          KC_F3,          KC_PAUSE,       KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_RALT,        KC_NO,          KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_APPLICATION,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                    KC_SPACE,       KC_TAB,         KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_NO
+    ___,            KC_F12,         KC_F7,          KC_F8,          KC_F9,          ___,            ___,                                            ___,            XXX,            XXX,            KC_MEH,         KC_HYPR,        XXX,            ___,
+    ___,            KC_F11,         KC_F4,          KC_F5,          KC_F6,          ___,            ___,                                            ___,            XXX,            KC_LSFT,        KC_LGUI,        KC_LALT,        KC_LCTL,        ___,
+    ___,            KC_F10,         KC_F1,          KC_F2,          KC_F3,          ___,                                                                            XXX,            XXX,            XXX,            XXX,            XXX,            ___,
+    ___,            XXX,            XXX,            XXX,            XXX,            XXX,            XXX,                                            XXX,            XXX,            XXX,            ___,            ___,            ___,            ___,
+    ___,            ___,            ___,            ___,            ___,                                                                                                            ___,            ___,            ___,            ___,            ___,
+                                                                                                    ___,            ___,            ___,            ___,
+                                                                                                                    ___,            ___,
+                                                                                    ___,            ___,            ___,            ___,            ___,            ___
   ),
   /* [ONESHOT] = LAYOUT_ergodox_pretty( */
-  /*   _______,        _______,        _______,        _______,        _______,        _______,        _______,                                        _______,        _______,        _______,        _______,        _______,        _______,        _______, */
-  /*   _______,        OSM_AC,         OSM_HYP,        OSM_MEH,        OSM_CM,         OSM_ACM,        _______,                                        _______,        OSM_ACM,        OSM_CM,         OSM_MEH,        OSM_HYP,        OSM_AC,         _______, */
-  /*   _______,        OSM_C,          OSM_A,          OSM_M,          OSM_S,          OSM_CMS,                                                                        OSM_CMS,        OSM_S,          OSM_M,          OSM_A,          OSM_C,          _______, */
-  /*   _______,        OSM_CS,         OSM_AS,         OSM_MS,         OSM_AM,         OSM_AMS,        _______,                                        _______,        OSM_AMS,        OSM_AM,         OSM_MS,         OSM_AS,         OSM_CS,         _______, */
-  /*   _______,        _______,        _______,        _______,        _______,                                                                                                        _______,        _______,        _______,        _______,        _______, */
-  /*                                                                                                   _______,        _______,        _______,        _______, */
-  /*                                                                                                                   _______,        _______, */
-  /*                                                                                   _______,        _______,        _______,        _______,        _______,        _______ */
+  /*   ___,            ___,            ___,            ___,            ___,            ___,            ___,                                            ___,            ___,            ___,            ___,            ___,            ___,            ___,     */
+  /*   ___,            OSM_AC,         OSM_HYP,        OSM_MEH,        OSM_CM,         OSM_ACM,        ___,                                            ___,            OSM_ACM,        OSM_CM,         OSM_MEH,        OSM_HYP,        OSM_AC,         ___,     */
+  /*   ___,            OSM_C,          OSM_A,          OSM_M,          OSM_S,          OSM_CMS,                                                                        OSM_CMS,        OSM_S,          OSM_M,          OSM_A,          OSM_C,          ___,     */
+  /*   ___,            OSM_CS,         OSM_AS,         OSM_MS,         OSM_AM,         OSM_AMS,        ___,                                            ___,            OSM_AMS,        OSM_AM,         OSM_MS,         OSM_AS,         OSM_CS,         ___,     */
+  /*   ___,            ___,            ___,            ___,            ___,                                                                                                            ___,            ___,            ___,            ___,            ___,     */
+  /*                                                                                                   ___,            ___,            ___,            ___,     */
+  /*                                                                                                                   ___,            ___,     */
+  /*                                                                                   ___,            ___,            ___,            ___,            ___,            _______ */
   /* ), */
-  [MOUSE] = LAYOUT_ergodox_pretty(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-    KC_TRANSPARENT, _______,        KC_HYPR,        KC_MEH,         KC_NO,          KC_NO,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_NO,          LSFT(KC_INSERT),LCTL(KC_INSERT),LSFT(KC_DELETE),_______,        KC_TRANSPARENT,
-    KC_TRANSPARENT, KC_LCTL,        KC_LALT,        KC_LGUI,        KC_LSFT,        KC_NO,                                                                          KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_UP,       KC_MS_RIGHT,    KC_TRANSPARENT, KC_NO,
-    KC_TRANSPARENT, KC_NO,          KC_RALT,        KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MS_WH_RIGHT, KC_MS_WH_UP,    KC_MS_WH_DOWN,  KC_MS_WH_LEFT,  KC_TRANSPARENT, KC_NO,
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,                                                                                                          KC_MS_BTN3,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                                                    KC_TRANSPARENT, KC_TRANSPARENT,
-                                                                                    KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN2,     KC_MS_BTN1
-  ),
+  /* [MOUSE] = LAYOUT_ergodox_pretty( */
+  /*   ___,            ___,            ___,            ___,            ___,            ___,            ___,                                            ___,            ___,            ___,            ___,            ___,            ___,            ___,            */
+  /*   ___,            ___,            KC_HYPR,        KC_MEH,         XXX,            XXX,            ___,                                            ___,            XXX,            LSFT(KC_INSERT),LCTL(KC_INSERT),LSFT(KC_DELETE),___,            ___,            */
+  /*   ___,            KC_LCTL,        KC_LALT,        KC_LGUI,        KC_LSFT,        XXX,                                                                            KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_UP,       KC_MS_RIGHT,    ___,            XXX,   */
+  /*   ___,            XXX,            KC_RALT,        XXX,            XXX,            XXX,            ___,                                            ___,            KC_MS_WH_RIGHT, KC_MS_WH_UP,    KC_MS_WH_DOWN,  KC_MS_WH_LEFT,  ___,            XXX,   */
+  /*   ___,            ___,            ___,            ___,            XXX,                                                                                                            KC_MS_BTN3,     ___,            ___,            ___,            ___,            */
+  /*                                                                                                   ___,            ___,            ___,            ___,            */
+  /*                                                                                                                   ___,            ___,            */
+  /*                                                                                   XXX,            ___,            ___,            ___,            KC_MS_BTN2,     KC_MS_BTN1 */
+  /* ), */
 };
 
 /* const uint16_t PROGMEM esc[] = {KC_Q, HYPR_T(KC_W), COMBO_END}; */
@@ -351,8 +354,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case WARP_OFF:
             if (record->event.pressed) {
-                layer_off(WARP);
                 tap_code(KC_ESC);
+                layer_off(WARP);
             }
             break;
 
