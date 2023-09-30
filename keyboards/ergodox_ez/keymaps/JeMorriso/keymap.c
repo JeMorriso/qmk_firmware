@@ -106,7 +106,7 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_ergodox_pretty(
-    ___,            KC_Q,           HYPR_T(KC_W),   MEH_T(KC_F),    KC_P,           KC_B,           ___,                                            ___,            KC_J,           KC_L,           MEH_T(KC_U),    HYPR_T(KC_Y),   KC_SCLN,        ___,
+    ___,            KC_Q,           HYPR_T(KC_W),   MEH_T(KC_F),    KC_P,           KC_B,           ___,                                            ___,            KC_J,           KC_L,           MEH_T(KC_U),    HYPR_T(KC_Y),   KC_QUOTE,       ___,
     ___,            CTL_T(KC_A),    OPT_T(KC_R),    CMD_T(KC_S),    SFT_T(KC_T),    KC_G,           ___,                                            ___,            KC_M,           SFT_T(KC_N),    CMD_T(KC_E),    OPT_T(KC_I),    CTL_T(KC_O),    ___,
     ___,            KC_Z,           KC_X,           KC_C,           KC_D,           KC_V,                                                                           KC_K,           KC_H,           KC_COMMA,       KC_DOT,         KC_SLASH,       ___,
     ___,            ___,            ___,            ___,     LT(MEDIA, KC_ESC), LT(NAV, KC_SPACE), LT(0, KC_TAB),                       LT(SYM, KC_ENTER), LT(NUM, KC_BACKSPACE), LT(FUN, KC_DELETE), ___,          ___,            ___,            ___,
@@ -147,7 +147,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [NUM] = LAYOUT_ergodox_pretty(
     ___,            KC_LBRC,        KC_7,           KC_8,           KC_9,           KC_RBRC,        ___,                                            ___,            XXX,            XXX,            KC_MEH,         KC_HYPR,        XXX,            ___,
-    ___,            KC_QUOTE,       KC_4,           KC_5,           KC_6,           KC_EQUAL,       ___,                                            ___,            XXX,            KC_LSFT,        KC_LGUI,        KC_LALT,        KC_LCTL,        ___,
+    ___,            KC_SCLN,        KC_4,           KC_5,           KC_6,           KC_EQUAL,       ___,                                            ___,            XXX,            KC_LSFT,        KC_LGUI,        KC_LALT,        KC_LCTL,        ___,
     ___,            KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_BACKSLASH,                                                                   XXX,            XXX,            XXX,            XXX,            XXX,            ___,
     ___,            ___,            ___,            ___,            KC_DOT,         KC_0,           KC_MINUS,                                       XXX,            XXX,            XXX,            ___,            ___,            ___,            ___,
     ___,            ___,            ___,            ___,            ___,                                                                                                            ___,            ___,            ___,            ___,            ___,
@@ -157,7 +157,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [SYM] = LAYOUT_ergodox_pretty(
     ___,            KC_LCBR,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RCBR,        ___,                                            ___,            XXX,            XXX,            KC_MEH,         KC_HYPR,        XXX,            ___,
-    ___,            KC_DQUO,        KC_DLR,         KC_PERC,        KC_CIRC,        KC_PLUS,        ___,                                            ___,            XXX,            KC_LSFT,        KC_LGUI,        KC_LALT,        KC_LCTL,        ___,
+    ___,            KC_COLN,         KC_DLR,         KC_PERC,        KC_CIRC,        KC_PLUS,        ___,                                            ___,            XXX,            KC_LSFT,        KC_LGUI,        KC_LALT,        KC_LCTL,        ___,
     ___,            KC_TILD,        KC_EXLM,        KC_AT,          KC_HASH,        KC_PIPE,                                                                        XXX,            XXX,            XXX,            XXX,            XXX,           ___,
     ___,            ___,            ___,            ___,            KC_LPRN,        KC_RPRN,        KC_UNDS,                                        XXX,            XXX,            XXX,            ___,            ___,            ___,            ___,
     ___,            ___,            ___,            ___,            ___,                                                                                                            ___,            ___,            ___,            ___,            ___,
