@@ -187,6 +187,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* ), */
 };
 
+/* enum combos { */
+/*     ne_open_bracket, */
+/*     ei_close_bracket, */
+/* } */
+
 /* const uint16_t PROGMEM esc[] = {KC_Q, HYPR_T(KC_W), COMBO_END}; */
 /* const uint16_t PROGMEM semicolon[] = {HYPR_T(KC_Y), KC_QUOTE, COMBO_END}; */
 /* const uint16_t PROGMEM colon[] = {SFT_T(KC_F), HYPR_T(KC_O), KC_P, COMBO_END}; */
@@ -197,7 +202,7 @@ const uint16_t PROGMEM raycast[] = {TL_1, TR_2, COMBO_END};
 const uint16_t PROGMEM warp[]     = {TL_2, TR_1, COMBO_END};
 const uint16_t PROGMEM homerow[] = {TL_2, TR_2, COMBO_END};
 
-const uint16_t PROGMEM warp_click[]     = {TL_3, TR_3, COMBO_END};
+/* const uint16_t PROGMEM warp_click[]     = {TL_3, TR_3, COMBO_END}; */
 const uint16_t PROGMEM caps_word[]     = {TL_3, TR_1, COMBO_END};
 
 /* const uint16_t PROGMEM osm_a[] = {TL_1, BASE_L, COMBO_END}; */
@@ -223,14 +228,60 @@ const uint16_t PROGMEM warp_screen[] = {TL_2, BASE_S, COMBO_END};
 const uint16_t PROGMEM warp_hint_one[] = {TL_2, BASE_L, COMBO_END};
 
 const uint16_t PROGMEM warp_hint2[] = {TL_2, TR_1, BASE_X, COMBO_END};
-const uint16_t PROGMEM warp_hint2_one[] = {TL_2, TR_1, BASE_X, COMBO_END};
+const uint16_t PROGMEM warp_hint2_one[] = {TL_2, TR_1, BASE_L, COMBO_END};
 
 const uint16_t PROGMEM raycast_windows[] = {BASE_W, TR_2, COMBO_END};
+
+/* top row + middle row single finger combos */
+const uint16_t PROGMEM bang[] = {BASE_Q, BASE_A, COMBO_END};
+const uint16_t PROGMEM at_symbol[] = {BASE_W, BASE_R, COMBO_END};
+const uint16_t PROGMEM hash[] = {BASE_F, BASE_S, COMBO_END};
+const uint16_t PROGMEM dollar[] = {BASE_P, BASE_T, COMBO_END};
+const uint16_t PROGMEM percent[] = {BASE_B, BASE_G, COMBO_END};
+const uint16_t PROGMEM caret[] = {BASE_J, BASE_M, COMBO_END};
+const uint16_t PROGMEM ampersand[] = {BASE_L, BASE_N, COMBO_END};
+const uint16_t PROGMEM star[] = {BASE_U, BASE_E, COMBO_END};
+const uint16_t PROGMEM colon[] = {BASE_Y, BASE_I, COMBO_END};
+const uint16_t PROGMEM semicolon[] = {BASE_QUOTE, BASE_O, COMBO_END};
+
+/* middle row + bottom row single finger combos */
+const uint16_t PROGMEM tilde[] = {BASE_A, BASE_Z, COMBO_END};
+const uint16_t PROGMEM grave[] = {BASE_R, BASE_X, COMBO_END};
+const uint16_t PROGMEM plus[] = {BASE_S, BASE_C, COMBO_END};
+const uint16_t PROGMEM equal[] = {BASE_T, BASE_D, COMBO_END};
+/* const uint16_t PROGMEM what[] = {BASE_G, BASE_V, COMBO_END}; */
+/* const uint16_t PROGMEM what[] = {BASE_M, BASE_K, COMBO_END}; */
+const uint16_t PROGMEM dash[] = {BASE_N, BASE_H, COMBO_END};
+const uint16_t PROGMEM underscore[] = {BASE_E, BASE_COMMA, COMBO_END};
+const uint16_t PROGMEM backslash[] = {BASE_I, BASE_DOT, COMBO_END};
+const uint16_t PROGMEM pipe[] = {BASE_O, BASE_SLASH, COMBO_END};
+
+/* left hand ring finger + middle finger combos */
+/* const uint16_t PROGMEM what[] = {BASE_W, BASE_F, COMBO_END}; */
+/* const uint16_t PROGMEM what[] = {BASE_R, BASE_S, COMBO_END}; */
+/* const uint16_t PROGMEM what[] = {BASE_X, BASE_C, COMBO_END}; */
+
+/* left hand middle finger + index finger combos */
+/* const uint16_t PROGMEM what[] = {BASE_F, BASE_P, COMBO_END}; */
+/* const uint16_t PROGMEM what[] = {BASE_S, BASE_T, COMBO_END}; */
+/* const uint16_t PROGMEM what[] = {BASE_C, BASE_D, COMBO_END}; */
+
+/* right hand ring finger + middle finger combos */
+const uint16_t PROGMEM close_paren[] = {BASE_Y, BASE_U, COMBO_END};
+const uint16_t PROGMEM close_bracket[] = {BASE_I, BASE_E, COMBO_END};
+const uint16_t PROGMEM close_brace[] = {BASE_DOT, BASE_COMMA, COMBO_END};
+
+/* right hand middle finger + index finger combos */
+const uint16_t PROGMEM open_paren[] = {BASE_U, BASE_L, COMBO_END};
+const uint16_t PROGMEM open_bracket[] = {BASE_E, BASE_N, COMBO_END};
+const uint16_t PROGMEM open_brace[] = {BASE_COMMA, BASE_H, COMBO_END};
 
 /* const uint16_t PROGMEM next_window[] = {BASE_U, BASE_I, BASE_O, COMBO_END}; */
 /* const uint16_t PROGMEM prev_window[] = {KC_7, KC_8, KC_9, COMBO_END}; */
 /* const uint16_t PROGMEM next_window_app[] = {BASE_I, BASE_O, BASE_P, COMBO_END}; */
 /* const uint16_t PROGMEM prev_window_app[] = {KC_8, KC_9, KC_0, COMBO_END}; */
+
+
 
 combo_t key_combos[] = {
     /* COMBO(esc, KC_ESC), */
@@ -257,7 +308,7 @@ combo_t key_combos[] = {
     /* COMBO(osm_ms, OSM_MS), */
     /* COMBO(osm_s, OSM_S), */
     COMBO(warp, WARP_ON),
-    COMBO(warp_click, WARP_CLICK),
+    /* COMBO(warp_click, WARP_CLICK), */
     COMBO(warp_hint, WARP_HINT),
     COMBO(warp_grid, WARP_GRID),
     COMBO(warp_hist, WARP_HIST),
@@ -270,6 +321,31 @@ combo_t key_combos[] = {
     /* COMBO(prev_window, MEH(KC_P)), */
     /* COMBO(next_window_app, HYPR(KC_N)), */
     /* COMBO(prev_window_app, HYPR(KC_P)), */
+
+    COMBO(bang, KC_EXLM),
+    COMBO(at_symbol, KC_AT),
+    COMBO(hash, KC_HASH),
+    COMBO(dollar, KC_DLR),
+    COMBO(percent, KC_PERC),
+    COMBO(caret, KC_CIRC),
+    COMBO(ampersand, KC_AMPR),
+    COMBO(star, KC_ASTR),
+    COMBO(colon, KC_COLN),
+    COMBO(semicolon, KC_SCLN),
+    COMBO(tilde, KC_TILD),
+    COMBO(grave, KC_GRAVE),
+    COMBO(plus, KC_PLUS),
+    COMBO(equal, KC_EQUAL),
+    COMBO(dash, KC_MINUS),
+    COMBO(underscore, KC_UNDS),
+    COMBO(backslash, KC_BACKSLASH),
+    COMBO(pipe, KC_PIPE),
+    COMBO(open_paren, KC_LPRN),
+    COMBO(open_bracket, KC_LBRC),
+    COMBO(open_brace, KC_LCBR),
+    COMBO(close_paren, KC_RPRN),
+    COMBO(close_bracket, KC_RBRC),
+    COMBO(close_brace, KC_RCBR),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -333,13 +409,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             break;
 
-        case WARP_CLICK:
-            if (record->event.pressed) {
-                SEND_STRING(SS_LGUI(SS_LALT("c")));
-                tap_code(KC_M);
-                tap_code(KC_ESC);
-            }
-            break;
+        /* case WARP_CLICK: */
+        /*     if (record->event.pressed) { */
+        /*         SEND_STRING(SS_LGUI(SS_LALT("c"))); */
+        /*         tap_code(KC_M); */
+        /*         tap_code(KC_ESC); */
+        /*     } */
+        /*     break; */
 
         case WARP_OFF:
             if (record->event.pressed) {
@@ -457,25 +533,31 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 
 
-/* bool get_combo_must_tap(uint16_t index, combo_t *combo) { */
+bool get_combo_must_tap(uint16_t index, combo_t *combo) {
     // If you want all combos to be tap-only, just uncomment the next line
     /* return true; */
 
-    // todo: see if i can get this working
-    // If you want *all* combos, that have Mod-Tap/Layer-Tap/Momentary keys in its chord, to be tap-only, this is for you:
-    /* uint16_t key; */
-    /* uint8_t idx = 0; */
-    /* while ((key = pgm_read_word(&combo->keys[idx])) != COMBO_END) { */
-    /*     switch (key) { */
-    /*         case QK_MOD_TAP...QK_MOD_TAP_MAX: */
-    /*         case QK_LAYER_TAP...QK_LAYER_TAP_MAX: */
-    /*         case QK_MOMENTARY...QK_MOMENTARY_MAX: */
-    /*             return true; */
-    /*     } */
-    /*     idx += 1; */
+    /* switch (combo->keycode) { */
+    /*     case BASE_E: */
+    /*         return true; */
+    /**/
+    /*     case BASE_N: */
+    /*         return true; */
     /* } */
-    /* return false; */
-/* } */
+// If you want *all* combos, that have Mod-Tap/Layer-Tap/Momentary keys in its chord, to be tap-only, this is for you:
+    uint16_t key;
+    uint8_t idx = 0;
+    while ((key = pgm_read_word(&combo->keys[idx])) != COMBO_END) {
+        switch (key) {
+            case QK_MOD_TAP...QK_MOD_TAP_MAX:
+            /* case QK_LAYER_TAP...QK_LAYER_TAP_MAX: */
+            /* case QK_MOMENTARY...QK_MOMENTARY_MAX: */
+                return true;
+        }
+        idx += 1;
+    }
+    return false;
+}
 
 extern rgb_config_t rgb_matrix_config;
 
